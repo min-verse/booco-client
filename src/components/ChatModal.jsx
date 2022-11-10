@@ -65,7 +65,7 @@ function ChatModal({ open, toggle, friend }) {
                 });
                 console.log("before state setter", messages);
                 setNewMessage('');
-                
+                autoScroll();
             },
             connected(data) {
                 console.log(data);
