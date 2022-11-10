@@ -38,8 +38,9 @@ function ReaderContent({ readerId }) {
         navigate("/home");
     }
 
-    const handleClick = ()=>{
+    const handleRemoveFriend = async () =>{
         console.log('I\'m clicked!');
+        
     }
 
     useEffect(() => {
@@ -134,7 +135,7 @@ function ReaderContent({ readerId }) {
                                             <button className="btn reader-result-buttons" disabled>Already Friends</button>
                                             <button onClick={toggleVisible} className="btn btn-success reader-result-buttons">Live Chat</button>
                                             <ChatModal friend={currentReader} open={visible} toggle={toggleVisible} />
-                                            <button className="btn btn-error reader-result-buttons">Remove Friend</button>
+                                            <button onClick={handleRemoveFriend} className="btn btn-error reader-result-buttons">Remove Friend</button>
                                         </>
                                         :
                                         <button className="btn" disabled>Pending</button>}
