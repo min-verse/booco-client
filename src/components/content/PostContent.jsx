@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Hero, Button, Toast, Artboard } from 'react-daisyui';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 import Typewriter from 'typewriter-effect';
 import { useSelector, useDispatch } from 'react-redux';
 import ReadingCard from '../ReadingCard';
@@ -19,6 +20,10 @@ function PostContent({ postId }) {
     const [postAuthor, setPostAuthor] = useState('');
     const [error, setError] = useState('');
     const [comments, setComments] = useState([]);
+    const navigate = useNavigate();
+    const goToLanding = () => {
+        navigate("/");
+    }
 
     useEffect(() => {
         console.log('evoked');
@@ -46,7 +51,7 @@ function PostContent({ postId }) {
                     })
                     .catch((err) => console.error(err));
             } else {
-                alert("Not logged in.");
+                goToLanding();
             }
         };
         getPost();
@@ -57,7 +62,7 @@ function PostContent({ postId }) {
         console.log("I'm submitted!");
     };
 
-    const handleError = (err)=>{
+    const handleError = (err) => {
         setError(err);
     };
 
@@ -72,25 +77,25 @@ function PostContent({ postId }) {
             {currentPost &&
                 <>
 
-                    <Link to={`/books/${currentPost['book']['id']}`} className="btn" style={{margin:20}}><FontAwesomeIcon style={{ color: 'white', marginRight: 8 }} icon={faChevronLeft} /> Back to {currentPost['book']['title']}</Link>
-                    {error && error.length && error.length > 0 ? 
-                    <ErrorAlert />
-                    :
-                    null}
+                    <Link to={`/books/${currentPost['book']['id']}`} className="btn" style={{ margin: 20 }}><FontAwesomeIcon style={{ color: 'white', marginRight: 8 }} icon={faChevronLeft} /> Back to {currentPost['book']['title']}</Link>
+                    {error && error.length && error.length > 0 ?
+                        <ErrorAlert />
+                        :
+                        null}
                     {/* <h1 style={{
                         fontSize: 30,
                         fontStyle: 'italic',
                         paddingLeft: 50
                     }}>{postId}</h1> */}
                     <div className="post-card-container">
-                        {currentPost && <div style={{padding:20}}>
+                        {currentPost && <div style={{ padding: 20 }}>
                             <h1 className="post-title">{currentPost['title']}</h1>
                             <small><em>written by:</em> {postAuthor['username']}</small>
                             <p className="post-content">{currentPost['content']}</p>
                             <small>on <em>{currentPost['created_at']}</em></small>
                         </div>}
                     </div>
-                    <CommentForm handleError={handleError} post={currentPost}  handleNewComment={handleNewComment}/>
+                    <CommentForm handleError={handleError} post={currentPost} handleNewComment={handleNewComment} />
                     <CommentList comments={comments} />
                 </>
             }

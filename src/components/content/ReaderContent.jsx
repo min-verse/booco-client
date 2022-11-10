@@ -25,7 +25,9 @@ function ReaderContent({ readerId }) {
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
     console.log(currentReader);
-
+    const goToLanding = () => {
+        navigate("/");
+    }
     const toggleVisible = ()=>{
         const newBool = !visible;
         console.log(newBool);
@@ -71,7 +73,7 @@ function ReaderContent({ readerId }) {
                     })
                     .catch((err) => console.error(err));
             } else {
-                alert("Not logged in.");
+                goToLanding();
             }
         };
         getReader();
@@ -101,7 +103,7 @@ function ReaderContent({ readerId }) {
                         setFriendStatus("pending");
                     });
             } else {
-                alert("You are not logged in.");
+                goToLanding();
             }
         } catch (error) {
             setLoading(false);

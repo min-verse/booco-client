@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { setUser, clearUser, setReadings, setPendingsUpdate, setOutgoingsUpdate, setReadingsUpdate, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
 import { useDispatch, useSelector } from 'react-redux';
 import ErrorAlert from './ErrorAlert';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 function ReaderResultCard({ reader }) {
 
@@ -15,6 +15,10 @@ function ReaderResultCard({ reader }) {
     console.log(reader);
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const goToLanding = () => {
+        navigate("/");
+    }
 
     useEffect(() => {
         if (user['friends'] && user['friends'].length && user['friends'].length > 0) {
@@ -54,7 +58,7 @@ function ReaderResultCard({ reader }) {
                         setInPending(true);
                     });
             } else {
-                alert("You are not logged in.");
+                goToLanding();
             }
         } catch (error) {
             setError(error);

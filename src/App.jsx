@@ -19,15 +19,16 @@ function App() {
   const dispatch = useDispatch();
   const user = useSelector((state)=> state.user);
   const navigate = useNavigate();
+  const goToLanding = ()=>{
+    navigate("/");
+  }
+
 
   const goToUserHome = ()=>{
     navigate("/home");
   }
 
-  const goToLanding = ()=>{
-    navigate("/");
-  }
-
+  
   useEffect(() => {
 
     let token = localStorage.getItem("token");
