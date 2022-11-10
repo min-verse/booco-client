@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import SignupModal from '../SignupModal';
 import { Link } from 'react-router-dom';
+import { setComments } from '../state/user';
 import { Hero, Button, Toast, Artboard } from 'react-daisyui';
+import { setCommentsUpdate } from '../state/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
@@ -21,6 +23,8 @@ function PostContent({ postId }) {
     const [postAuthor, setPostAuthor] = useState('');
     const [error, setError] = useState('');
     const [comments, setComments] = useState([]);
+    const dispatch = useDispatch();
+    const user = useSelector((state)=>state.user);
     const navigate = useNavigate();
     const goToLanding = () => {
         navigate("/");
@@ -71,6 +75,8 @@ function PostContent({ postId }) {
         setComments((prevComments) => {
             return [...prevComments, obj];
         });
+        // check this line of code later haha
+        dispatch(setCommentsUpdate([...user['comments'], obj]));
     };
 
     return (

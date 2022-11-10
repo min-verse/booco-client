@@ -52,7 +52,7 @@ function StatsComponent() {
                     <div className="stat-figure text-secondary">
                         <div className="avatar">
                             <div className="w-16 rounded-full">
-                                <img src="https://placeimg.com/128/128/people" />
+                                <img src="https://cdn-icons-png.flaticon.com/512/1665/1665628.png" />
                             </div>
                         </div>
                     </div>

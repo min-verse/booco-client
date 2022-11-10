@@ -132,7 +132,8 @@ function BookCard({ book }) {
                             console.log(data);
                             setStatus(status);
                             setCurrentProgress(numberOfPages);
-                            dispatch(setReadingsUpdate(data));
+                            // check this line of code later haha
+                            dispatch(setReadingsUpdate(data.reverse()));
                         }
                     });
             } else {

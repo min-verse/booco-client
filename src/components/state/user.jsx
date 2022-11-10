@@ -19,7 +19,7 @@ export const userSlice = createSlice({
                 id: action.payload.id,
                 email: action.payload.email,
                 username: action.payload.username,
-                avatar:action.payload.avatar
+                avatar: action.payload.avatar
             };
             state.isAuthenticated = true;
         },
@@ -35,7 +35,8 @@ export const userSlice = createSlice({
             state.moods = {};
         },
         setReadings: (state, action) => {
-            state.readings = [...action.payload.readings];
+            // check THIS line of code later haha
+            state.readings = [...action.payload.readings.reverse()];
         },
         setFriends: (state, action) => {
             state.friends = [...action.payload.friends];
@@ -67,8 +68,14 @@ export const userSlice = createSlice({
         setOutgoingsUpdate: (state, action) => {
             state.outgoings = [...action.payload]
         },
-        setFriendsUpdate: (state, action)=>{
+        setFriendsUpdate: (state, action) => {
             state.friends = [...action.payload];
+        },
+        setCommentsUpdate: (state, action) => {
+            state.comments = [...action.payload];
+        },
+        setPostsUpdate: (state,action)=>{
+            state.posts = [...action.payload];
         }
     },
 });
@@ -86,6 +93,8 @@ export const { setUser,
     setPendingsUpdate,
     setOutgoings,
     setOutgoingsUpdate,
-    setFriendsUpdate } = userSlice.actions;
+    setFriendsUpdate,
+    setCommentsUpdate,
+    setPostsUpdate } = userSlice.actions;
 
 export default userSlice.reducer;

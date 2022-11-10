@@ -3,6 +3,7 @@ import SignupModal from '../SignupModal';
 import { Link } from 'react-router-dom';
 import { Hero, Button, Toast, Artboard } from 'react-daisyui';
 import Typewriter from 'typewriter-effect';
+import { setPostsUpdate } from '../state/user';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import ReadingCard from '../ReadingCard';
@@ -14,9 +15,11 @@ function BookContent({ bookId }) {
 
     const [currentBook, setCurrentBook] = useState();
     const [posts, setPosts] = useState([]);
+    const dispatch = useDispatch();
+    const user = useSelector((state)=>state.user);
     const navigate = useNavigate();
-    const goToLanding = ()=>{
-      navigate("/");
+    const goToLanding = () => {
+        navigate("/");
     }
 
 
@@ -54,10 +57,11 @@ function BookContent({ bookId }) {
 
     const handlePostSubmit = (obj) => {
         console.log(obj);
-        setPosts((prevPosts)=>{
+        setPosts((prevPosts) => {
             return [obj, ...prevPosts];
         })
-        
+        // check this line of code later
+        dispatch(setPostsUpdate([...user['posts'], obj]));
     };
 
     return (
