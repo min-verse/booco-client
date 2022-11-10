@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setUser, clearUser, setReadings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-// import { ReactComponent as BoocoSvg } from '../assets/booco-logo.svg';
+import { ReactComponent as BoocoSvg } from '../assets/booco-logo.svg';
 import { Navbar, Dropdown, Button, Menu, Form, Input } from 'react-daisyui';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -110,13 +110,10 @@ function NavBarUser() {
                             <Dropdown.Item><Button className="ml-4" onClick={handleLogOut}>Log Out</Button></Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    {/* <BoocoSvg className="pb-1" /> */}
+                    <BoocoSvg className="pb-1" />
                     <Link to="/home" className="btn btn-ghost normal-case text-xl">BOOCO</Link>
                     {/* <a className="btn btn-ghost normal-case text-xl">BOOCO</a> */}
-                </Navbar.Start>
-                <Navbar.End className="navbar-user-end">
-                    {/* <h1 style={{marginRight:12}}>Welcome Back, {user['profile']['username']}</h1> */}
-                    <Form onSubmit={handleSearch}>
+                    <Form className="nav-mid-search-bar" style={{marginBottom:5}} onSubmit={handleSearch}>
                         <Input
                             onChange={handleSearchChange}
                             value={bookSearch}
@@ -125,13 +122,51 @@ function NavBarUser() {
                             type="text"
                             placeholder="Search Books" />
                     </Form>
-                    {loading ?
+                </Navbar.Start>
+                {/* <Form className="nav-mid-search-bar" style={{marginBottom:5}} onSubmit={handleSearch}>
+                        <Input
+                            onChange={handleSearchChange}
+                            value={bookSearch}
+                            name="search"
+                            bordered
+                            type="text"
+                            placeholder="Search Books" />
+                    </Form> */}
+                <Navbar.End className="navbar-user-end">
+                    {/* <h1 style={{marginRight:12}}>Welcome Back, {user['profile']['username']}</h1> */}
+                    {/* <Form style={{marginBottom:5}} onSubmit={handleSearch}>
+                        <Input
+                            onChange={handleSearchChange}
+                            value={bookSearch}
+                            name="search"
+                            bordered
+                            type="text"
+                            placeholder="Search Books" />
+                    </Form> */}
+                    <Dropdown vertical="end">
+                        <Button color="ghost" className="avatar" shape="circle">
+                            <div className="mask mask-squircle w-12 h-12">
+                                <img src={user['profile']['avatar'] ? user['profile']['avatar'] : "https://i.imgur.com/KhYI6SH.jpg"} alt="Avatar Tailwind CSS Component" />
+                            </div>
+                        </Button>
+                        <Dropdown.Menu className="w-52 menu-compact">
+                            <Dropdown.Item>Welcome, <br/>{user['profile']['username'] ? user['profile']['username'] : "fellow reader"}</Dropdown.Item>
+                            <Dropdown.Item>{loading ?
+                                <Button className="ml-4" disabled>Logging Out...
+                                    <span className="animate-spin"><FontAwesomeIcon style={{ color: 'white', marginLeft: 8 }} icon={faSpinner} /></span>
+                                </Button>
+                                :
+                                <Button className="ml-4" onClick={handleLogOut}>Log Out</Button>
+                            }</Dropdown.Item>
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    {/* {loading ?
                         <Button className="ml-4" disabled>Logging Out... 
                         <span className="animate-spin"><FontAwesomeIcon style={{color:'white', marginLeft:8}} icon={faSpinner} /></span>
                         </Button>
                         :
                         <Button className="ml-4" onClick={handleLogOut}>Log Out</Button>
-                    }
+                    } */}
                 </Navbar.End>
             </Navbar>
         </div>

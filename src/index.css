@@ -145,6 +145,12 @@ body {
     }
 }
 
+@media(max-width:1025px){
+    .nav-mid-search-bar{
+        display:none;
+    }
+}
+
 @media (max-width:1000px) {
     .stat-component-horizontal {
         display: none;
@@ -157,7 +163,7 @@ body {
     }
 }
 
-@media (max-width: 800px) {
+@media (max-width: 300px) {
     .navbar-user-end {
         display: none;
     }

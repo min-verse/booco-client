@@ -25,7 +25,8 @@
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
     "redux": "^4.2.0",
-    "typewriter-effect": "^2.19.0"
+    "typewriter-effect": "^2.19.0",
+    "vite-plugin-svgr": "^2.2.2"
   },
   "devDependencies": {
     "@types/react": "^18.0.24",
