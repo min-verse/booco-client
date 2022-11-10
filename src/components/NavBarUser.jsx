@@ -113,7 +113,7 @@ function NavBarUser() {
                     <BoocoSvg className="pb-1" />
                     <Link to="/home" className="btn btn-ghost normal-case text-xl">BOOCO</Link>
                     {/* <a className="btn btn-ghost normal-case text-xl">BOOCO</a> */}
-                    <Form className="nav-mid-search-bar" style={{marginBottom:5}} onSubmit={handleSearch}>
+                    <Form className="nav-mid-search-bar" style={{marginLeft: 10, marginBottom:3}} onSubmit={handleSearch}>
                         <Input
                             onChange={handleSearchChange}
                             value={bookSearch}

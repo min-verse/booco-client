@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import FriendTableRow from '../FriendTableRow';
+import FriendTableRow from './FriendTableRow';
 
 function FriendTable({ friends }) {
 

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import FriendRowComponent from './FriendRowComponent';
 import PendingRowComponent from './PendingRowComponent';
-import ToReadRowComponent from '../ToReadRowComponent';
+import ToReadRowComponent from './ToReadRowComponent';
 
 function CompletedTableComponent({ readings }) {
 
