@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import ReadingCard from '../ReadingCard';
 import BookCard from '../BookCard';
 import PostList from '../PostList';
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
 import ReaderResultContent from './ReaderResultContent';
 import ChatModal from '../ChatModal';
 
@@ -24,11 +26,12 @@ function ReaderContent({ readerId }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
+    const MySwal = withReactContent(Swal)
     console.log(currentReader);
     const goToLanding = () => {
         navigate("/");
     }
-    const toggleVisible = ()=>{
+    const toggleVisible = () => {
         const newBool = !visible;
         console.log(newBool);
         setVisible(newBool);
@@ -38,9 +41,62 @@ function ReaderContent({ readerId }) {
         navigate("/home");
     }
 
-    const handleRemoveFriend = async () =>{
+    const handleRemoveFriend = async () => {
         console.log('I\'m clicked!');
-        
+        const confirmation = await MySwal.fire({
+            title: <p>Are you sure you want to remove {currentReader['username'] ? currentReader['username'] : "this reader"} as a friend?</p>,
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Remove ${currentReader['username'] ? currentReader['username'] : "this reader"}`,
+            confirmButtonColor: '#ef4444'
+        })
+
+        if (confirmation['value']) {
+            console.log("This code block is reached");
+            // try {
+            //     setLoading(true);
+            //     let token = localStorage.getItem("token");
+            //     if (token) {
+            //         await fetch(`http://localhost:5000/friendships/${currentReader['id']}`, {
+            //             method: 'DELETE',
+            //             headers: {
+            //                 "Content-Type": "application/json",
+            //                 Authorization: token,
+            //             }
+            //         }).then(res => res.json())
+            //             .then((data) => {
+            //                 console.log(data);
+            //                 setLoading(false);
+            //                 dispatch(setFriends(data));
+            //             })
+            //     }
+            // } catch (err) {
+            //     console.log(err);
+            //     setLoading(false);
+            //     setError(err);
+            // }
+        }
+        // try {
+        //     setLoading(true);
+        //     let token = localStorage.getItem("token");
+        //     if (token) {
+        //         await fetch(`http://localhost:5000/friendships/${currentReader['id']}`, {
+        //             method: 'DELETE',
+        //             headers: {
+        //                 "Content-Type": "application/json",
+        //                 Authorization: token,
+        //             }
+        //         }).then(res => res.json())
+        //             .then((data) => {
+        //                 setLoading(false);
+        //                 dispatch(setFriends(data));
+        //             })
+        //     }
+        // } catch (err) {
+        //     setLoading(false);
+        //     setError(err);
+        // }
+
     }
 
     useEffect(() => {
@@ -132,10 +188,24 @@ function ReaderContent({ readerId }) {
                                 <>
                                     {friendStatus === "accepted" ?
                                         <>
-                                            <button className="btn reader-result-buttons" disabled>Already Friends</button>
+                                            {loading ?
+                                                <>
+                                                    <button className="btn reader-result-buttons" disabled>Removing...</button>
+                                                    <button className="btn btn-success reader-result-buttons" disabled>Removing...</button>
+                                                    <button className="btn btn-error reader-result-buttons" disabled>Removing...</button>
+                                                </>
+                                                :
+                                                <>
+                                                    <button className="btn reader-result-buttons" disabled>Already Friends</button>
+                                                    <button onClick={toggleVisible} className="btn btn-success reader-result-buttons">Live Chat</button>
+                                                    <ChatModal friend={currentReader} open={visible} toggle={toggleVisible} />
+                                                    <button onClick={handleRemoveFriend} className="btn btn-error reader-result-buttons">Remove Friend</button>
+                                                </>
+                                            }
+                                            {/* <button className="btn reader-result-buttons" disabled>Already Friends</button>
                                             <button onClick={toggleVisible} className="btn btn-success reader-result-buttons">Live Chat</button>
                                             <ChatModal friend={currentReader} open={visible} toggle={toggleVisible} />
-                                            <button onClick={handleRemoveFriend} className="btn btn-error reader-result-buttons">Remove Friend</button>
+                                            <button onClick={handleRemoveFriend} className="btn btn-error reader-result-buttons">Remove Friend</button> */}
                                         </>
                                         :
                                         <button className="btn" disabled>Pending</button>}

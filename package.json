@@ -25,6 +25,8 @@
     "react-router": "^6.4.3",
     "react-router-dom": "^6.4.3",
     "redux": "^4.2.0",
+    "sweetalert2": "^11.6.8",
+    "sweetalert2-react-content": "^5.0.7",
     "typewriter-effect": "^2.19.0",
     "vite-plugin-svgr": "^2.2.2"
   },

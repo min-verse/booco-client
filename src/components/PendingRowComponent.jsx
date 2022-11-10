@@ -55,7 +55,7 @@ function PendingRowComponent({ pendingData, handleError }) {
                     if(!data['error']){
                         setLoading(false);
                         handleError('');
-                        dispatch(setPendingsUpdate(data));
+                        dispatch(setPendings(data));
                     }else if(data['error']){
                         setLoading(false);
                         handleError(data['error']);
