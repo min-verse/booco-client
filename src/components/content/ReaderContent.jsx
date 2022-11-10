@@ -51,30 +51,33 @@ function ReaderContent({ readerId }) {
             confirmButtonColor: '#ef4444'
         })
 
+        // check this code later for edge cases
         if (confirmation['value']) {
             console.log("This code block is reached");
-            // try {
-            //     setLoading(true);
-            //     let token = localStorage.getItem("token");
-            //     if (token) {
-            //         await fetch(`http://localhost:5000/friendships/${currentReader['id']}`, {
-            //             method: 'DELETE',
-            //             headers: {
-            //                 "Content-Type": "application/json",
-            //                 Authorization: token,
-            //             }
-            //         }).then(res => res.json())
-            //             .then((data) => {
-            //                 console.log(data);
-            //                 setLoading(false);
-            //                 dispatch(setFriends(data));
-            //             })
-            //     }
-            // } catch (err) {
-            //     console.log(err);
-            //     setLoading(false);
-            //     setError(err);
-            // }
+            try {
+                setLoading(true);
+                let token = localStorage.getItem("token");
+                if (token) {
+                    await fetch(`http://localhost:5000/friendships/${currentReader['id']}`, {
+                        method: 'DELETE',
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: token,
+                        }
+                    }).then(res => res.json())
+                        .then((data) => {
+                            console.log(data);
+                            setLoading(false);
+                            dispatch(setFriends(data));
+                        })
+                }
+            } catch (err) {
+                console.log(err);
+                setLoading(false);
+                setError(err);
+            }
+        }else{
+            console.log('rejected');
         }
         // try {
         //     setLoading(true);
