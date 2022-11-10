@@ -14,6 +14,11 @@ function ChatModal({ open, toggle, friend }) {
     const friend1 = Math.min(user['profile']['id'], friend['id']);
     const friend2 = Math.max(user['profile']['id'], friend['id']);
     const room = `chat_${friend1} ${friend2}`;
+    const chatBoxDisplay = document.getElementById('chat-box-display');
+
+    const autoScroll = ()=>{
+        chatBoxDisplay.scrollTop = chatBoxDisplay.scrollHeight;
+    }
     
 
     console.log(room);
@@ -138,6 +143,7 @@ function ChatModal({ open, toggle, friend }) {
                 room: room
             })
         }).then(res => res.json());
+        autoScroll();
     }
 
 
