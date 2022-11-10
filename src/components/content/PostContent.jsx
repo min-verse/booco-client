@@ -13,6 +13,7 @@ import PostList from '../PostList';
 import CommentList from '../CommentList';
 import CommentForm from '../CommentForm';
 import ErrorAlert from '../ErrorAlert';
+import PostPageCard from '../PostPageCard';
 
 function PostContent({ postId }) {
 
@@ -88,15 +89,20 @@ function PostContent({ postId }) {
                         paddingLeft: 50
                     }}>{postId}</h1> */}
                     <div className="post-card-container">
-                        {currentPost && <div style={{ padding: 20 }}>
-                            <h1 className="post-title">{currentPost['title']}</h1>
-                            <small><em>written by:</em> {postAuthor['username']}</small>
-                            <p className="post-content">{currentPost['content']}</p>
-                            <small>on <em>{currentPost['created_at']}</em></small>
-                        </div>}
+                        {currentPost &&
+                            <PostPageCard currentPost={currentPost} postAuthor={postAuthor} />
+                            // <div style={{ padding: 20 }}>
+                            //     <h1 className="post-title">{currentPost['title']}</h1>
+                            //     <small><em>written by:</em> {postAuthor['username']}</small>
+                            //     <p className="post-content">{currentPost['content']}</p>
+                            //     <small>on <em>{currentPost['time']}</em></small>
+                            // </div>
+                        }
                     </div>
                     <CommentForm handleError={handleError} post={currentPost} handleNewComment={handleNewComment} />
-                    <CommentList comments={comments} />
+                    <div className="all-comments-container">
+                        <CommentList comments={comments} />
+                    </div>
                 </>
             }
         </>

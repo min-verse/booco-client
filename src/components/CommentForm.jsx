@@ -61,7 +61,7 @@ function CommentForm({ post, handleError, handleNewComment }) {
                         marginBottom:10,
                         width:'80%'
                     }}></textarea>
-                <button type="submit" className="btn" style={{alignItems:'right'}}>Add Comment</button>
+                <button type="submit" className="btn" style={{alignSelf:'flex-end'}}>Add Comment</button>
             </form>
         </>
     );

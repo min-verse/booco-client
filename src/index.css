@@ -197,9 +197,13 @@ body {
     box-shadow: 10px 10px 1px #80dbff, 10px 10px 1px 2px rgba(0, 0, 0, 1);
 }
 
-@media (max-width: 315px) {
+@media (max-width: 320px) {
     .reader-result-card-container{
        flex-direction: column;
+    }
+
+    .post-interior-content{
+        flex-direction: column;
     }
 }
 
@@ -493,4 +497,62 @@ body {
 
 .chat-text-style{
     font-family: 'Inconsolata', monospace;
+}
+
+/* Post Page Card */
+.post-interior-content{
+    padding: 20px;
+    display:flex;
+    word-wrap: break-word;
+}
+
+.post-interior-avatar{
+    margin-top: 30px;
+    margin-right: 20px;
+}
+
+/* comments styling */
+.all-comments-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+
+.comment-container{
+    border-spacing: 0;
+    background-color: white;
+    word-wrap: break-word;
+    width:80%;
+    padding: 12px;
+    display: flex;
+    margin: 20px 40px;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: row;
+    border: 2px solid;
+    border-radius: 10px;
+    box-shadow: 10px 10px 1px #80dbff, 10px 10px 1px 2px rgba(0, 0, 0, 1);
+}
+
+.comment-avatar{
+    margin:20px;
+}
+
+.comment-content{
+    padding:20px;
+}
+
+.comment-username{
+    font-size: 15px;
+}
+
+.comment-thoughts{
+    font-family: 'Cabin', sans-serif;
+}
+
+@media (max-width: 450px) {
+    .comment-container{
+        flex-direction: column;
+    }
 }
