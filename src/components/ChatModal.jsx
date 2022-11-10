@@ -14,9 +14,7 @@ function ChatModal({ open, toggle, friend }) {
     const friend1 = Math.min(user['profile']['id'], friend['id']);
     const friend2 = Math.max(user['profile']['id'], friend['id']);
     const room = `chat_${friend1} ${friend2}`;
-    const element = document.getElementById('chat-box-display');
-    console.log(element);
-    console.log(element.scrollHeight);
+    
 
     console.log(room);
 
@@ -62,10 +60,7 @@ function ChatModal({ open, toggle, friend }) {
                 });
                 console.log("before state setter", messages);
                 setNewMessage('');
-                element.scroll({
-                    top: element.scrollHeight,
-                    behavior: 'smooth'
-                });
+                
             },
             connected(data) {
                 console.log(data);

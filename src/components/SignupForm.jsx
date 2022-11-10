@@ -107,10 +107,11 @@ function SignupForm({ handleError }) {
                         localStorage.setItem("token", res.headers.get("Authorization"));
                         return res.json();
                     } else {
-                        return res.text().then((text) => Promise.reject(text));
+                        return res.json().then((text) => Promise.reject(text));
                     }
                 })
                 .then((data) => {
+                    console.log(data);
                     setLoading(false);
                     if (!data['status']['code']) {
                         handleError(data['status']['message']);
@@ -120,8 +121,10 @@ function SignupForm({ handleError }) {
                     }
                 })
                 .catch((err)=>{
+                    console.log(typeof err);
+                    console.log(err);
                     setLoading(false);
-                    handleError(err);
+                    handleError(err['status']['message']);
                 });
         }
     }
