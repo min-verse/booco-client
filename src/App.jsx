@@ -1,34 +1,97 @@
-import { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import reactLogo from './assets/react.svg'
+import LandingPage from './components/pages/LandingPage';
+import HomePage from './components/pages/HomePage';
+import BookPage from './components/pages/BookPage';
+import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser, clearUser, setReadings, setOutgoings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './components/state/user';
+import PostPage from './components/pages/PostPage';
 import './App.css'
+import ReaderPage from './components/pages/ReaderPage';
+import BookResultsPage from './components/pages/BookResultsPage';
+import ReaderResultsContent from './components/content/ReaderResultsContent';
+import ReaderResultsPage from './components/pages/ReaderResultsPage';
+import ChatExamplePage from './components/pages/ChatExamplePage';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const dispatch = useDispatch();
+  const user = useSelector((state)=> state.user);
+  const navigate = useNavigate();
+
+  const goToUserHome = ()=>{
+    navigate("/home");
+  }
+
+  const goToLanding = ()=>{
+    navigate("/");
+  }
+
+  useEffect(() => {
+
+    let token = localStorage.getItem("token");
+    if (token) {
+      fetch("http://localhost:5000/private/verify", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: token,
+        },
+      })
+        .then((res) => {
+          if (res.ok) {
+            return res.json();
+          } else if (res.status == "401") {
+            throw new Error("Unauthorized Request. Must be signed in.");
+          }
+        })
+        .then((data) =>{
+          console.log(data);
+          dispatch(setUser(data));
+          dispatch(setReadings(data));
+          dispatch(setFriends(data));
+          dispatch(setPosts(data));
+          dispatch(setComments(data));
+          dispatch(setPendings(data));
+          dispatch(setGenres(data));
+          dispatch(setMoods(data));
+          dispatch(setOutgoings(data));
+        })
+        .catch((err) =>{ 
+          console.error(err);
+          goToLanding();
+        });
+    } else {
+      // alert("Not logged in.");
+      goToLanding();
+    }
+  }, []);
+
+
+  function getToken() {
+    let now = new Date(Date.now()).getTime();
+    let threeDays = 1000 * 60 * 30 * 144;
+    let timeSinceLastLogin = now - localStorage.getItem("lastLoginTime");
+    if (timeSinceLastLogin < threeDays) {
+      return localStorage.getItem("token");
+    } else {
+      localStorage.removeItem("token");
+      return null;
+    }
+  }
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </div>
-  )
+    <Routes>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/home" element={<HomePage />} />
+      <Route path="/books/:id" element={<BookPage />}/>
+      <Route path="/browse" element={<BookResultsPage />} />
+      <Route path="/readersearch" element={<ReaderResultsPage />} />
+      <Route path="/posts/:id" element={<PostPage />}/>
+      <Route path="/readers/:id" element={<ReaderPage />}/>
+      {/* <Route path="/chat-test" element={<ChatExamplePage />}/> */}
+    </Routes>
+  );
 }
 
 export default App

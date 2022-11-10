@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { twMerge } from 'tailwind-merge';
 import SignupModal from './SignupModal';
 import LoginModal from './LoginModal';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUser, clearUser, setReadings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { ReactComponent as BoocoSvg } from '../assets/booco-logo.svg';
+// import { ReactComponent as BoocoSvg } from '../assets/booco-logo.svg';
 import { Navbar, Dropdown, Button, Menu, Form, Input } from 'react-daisyui';
 import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 
@@ -111,7 +110,7 @@ function NavBarUser() {
                             <Dropdown.Item><Button className="ml-4" onClick={handleLogOut}>Log Out</Button></Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    <BoocoSvg className="pb-1" />
+                    {/* <BoocoSvg className="pb-1" /> */}
                     <Link to="/home" className="btn btn-ghost normal-case text-xl">BOOCO</Link>
                     {/* <a className="btn btn-ghost normal-case text-xl">BOOCO</a> */}
                 </Navbar.Start>
