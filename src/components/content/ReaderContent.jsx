@@ -1,14 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import SignupModal from '../SignupModal';
-import { Link, useNavigate } from 'react-router-dom';
-import { Hero, Button, Toast, Artboard } from 'react-daisyui';
-import { setUser, clearUser, setReadings, setPendingsUpdate, setOutgoingsUpdate, setReadingsUpdate, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from '../state/user';
-import Typewriter from 'typewriter-effect';
+import { useNavigate } from 'react-router-dom';
+import { setOutgoingsUpdate, setFriends } from '../state/user';
 import ErrorAlert from '../ErrorAlert';
 import { useSelector, useDispatch } from 'react-redux';
-import ReadingCard from '../ReadingCard';
-import BookCard from '../BookCard';
-import PostList from '../PostList';
 import Swal from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
 import ReaderResultContent from './ReaderResultContent';
@@ -22,12 +16,11 @@ function ReaderContent({ readerId }) {
     const [friendStatus, setFriendStatus] = useState();
     const [loading, setLoading] = useState(false);
     const [sentRequest, setSentRequest] = useState(false);
-    const [comments, setComments] = useState([]);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector((state) => state.user);
-    const MySwal = withReactContent(Swal)
-    console.log(currentReader);
+    const MySwal = withReactContent(Swal);
+
     const goToLanding = () => {
         navigate("/");
     }
@@ -79,27 +72,6 @@ function ReaderContent({ readerId }) {
         }else{
             console.log('rejected');
         }
-        // try {
-        //     setLoading(true);
-        //     let token = localStorage.getItem("token");
-        //     if (token) {
-        //         await fetch(`http://localhost:5000/friendships/${currentReader['id']}`, {
-        //             method: 'DELETE',
-        //             headers: {
-        //                 "Content-Type": "application/json",
-        //                 Authorization: token,
-        //             }
-        //         }).then(res => res.json())
-        //             .then((data) => {
-        //                 setLoading(false);
-        //                 dispatch(setFriends(data));
-        //             })
-        //     }
-        // } catch (err) {
-        //     setLoading(false);
-        //     setError(err);
-        // }
-
     }
 
     useEffect(() => {
@@ -123,7 +95,6 @@ function ReaderContent({ readerId }) {
                         }
                     })
                     .then((data) => {
-                        console.log(data);
                         if (data['reader_self']) {
                             goToUserHome();
                         } else if (data['reader']) {
@@ -155,11 +126,9 @@ function ReaderContent({ readerId }) {
                     })
                 }).then(res => res.json())
                     .then((data) => {
-                        console.log(data);
                         setError('');
                         setLoading(false);
                         dispatch(setOutgoingsUpdate(data));
-                        console.log(data);
                         setFriendStatus("pending");
                     });
             } else {
@@ -205,10 +174,6 @@ function ReaderContent({ readerId }) {
                                                     <button onClick={handleRemoveFriend} className="btn btn-error reader-result-buttons">Remove Friend</button>
                                                 </>
                                             }
-                                            {/* <button className="btn reader-result-buttons" disabled>Already Friends</button>
-                                            <button onClick={toggleVisible} className="btn btn-success reader-result-buttons">Live Chat</button>
-                                            <ChatModal friend={currentReader} open={visible} toggle={toggleVisible} />
-                                            <button onClick={handleRemoveFriend} className="btn btn-error reader-result-buttons">Remove Friend</button> */}
                                         </>
                                         :
                                         <button className="btn" disabled>Pending</button>}

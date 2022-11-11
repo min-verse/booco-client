@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
+import React, { useEffect } from 'react'
 import LandingPage from './components/pages/LandingPage';
 import HomePage from './components/pages/HomePage';
 import BookPage from './components/pages/BookPage';
-import { Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, clearUser, setReadings, setOutgoings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './components/state/user';
+import { setUser, setReadings, setOutgoings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './components/state/user';
 import PostPage from './components/pages/PostPage';
 import './App.css'
 import ReaderPage from './components/pages/ReaderPage';
 import BookResultsPage from './components/pages/BookResultsPage';
-import ReaderResultsContent from './components/content/ReaderResultsContent';
 import ReaderResultsPage from './components/pages/ReaderResultsPage';
-import ChatExamplePage from './components/pages/ChatExamplePage';
 
 function App() {
 
@@ -90,7 +87,6 @@ function App() {
       <Route path="/readersearch" element={<ReaderResultsPage />} />
       <Route path="/posts/:id" element={<PostPage />}/>
       <Route path="/readers/:id" element={<ReaderPage />}/>
-      {/* <Route path="/chat-test" element={<ChatExamplePage />}/> */}
     </Routes>
   );
 }

@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import FriendRowComponent from './FriendRowComponent';
+import React, { useState } from 'react';
 import PendingRowComponent from './PendingRowComponent';
 import ErrorAlert from './ErrorAlert';
 
 function PendingTableComponent({ pendings }) {
 
     const [error, setError] = useState('');
-    const handleError = (obj)=>{
+    const handleError = (obj) => {
         setError(obj);
     };
 

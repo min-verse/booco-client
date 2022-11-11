@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -7,7 +7,7 @@ function FriendRowComponent({ friendData }) {
     const { friend, current_book } = friendData;
 
     const { id, avatar, username } = friend;
-    const user = useSelector((state)=>state.user);
+    const user = useSelector((state) => state.user);
 
     return (
         <>
@@ -34,34 +34,26 @@ function FriendRowComponent({ friendData }) {
                                 :
                                 current_book['title']
                             :
-                            <span style={{color:'gray'}}>No books yet</span>
+                            <span style={{ color: 'gray' }}>No books yet</span>
                     }
-                    {/* {title && title.length && title.length > 0 ?
-                        title.length > 30 ?
-                            title.slice(0, 30) + "..."
-                            :
-                            title
-                        :
-                        "No books added yet"
-                    } */}
                     <br />
                     <span className="badge badge-ghost badge-sm">
                         {current_book ?
                             current_book['author']
                             :
-                            <span style={{color:'gray'}}>Not applicable</span>
+                            <span style={{ color: 'gray' }}>Not applicable</span>
                         }
                     </span>
                 </td>
 
                 <th className="bg-sky-50">
-                    {user['profile']['id'] === id ? 
-                    <button className="btn btn-ghost btn-xs bg-gray-200" disabled>
-                    this is you
-                    </button>
-                    :
-                    <Link to={`/readers/${id}`} className="btn btn-ghost btn-xs bg-gray-200">
-                        details
+                    {user['profile']['id'] === id ?
+                        <button className="btn btn-ghost btn-xs bg-gray-200" disabled>
+                            this is you
+                        </button>
+                        :
+                        <Link to={`/readers/${id}`} className="btn btn-ghost btn-xs bg-gray-200">
+                            details
                         </Link>}
                 </th>
             </tr>

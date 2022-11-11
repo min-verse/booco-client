@@ -1,32 +1,29 @@
-import React, { Fragment, useState, useEffect } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import NavBarLanding from '../NavBarLanding';
 import NavBarUser from '../NavBarUser';
-import HomeContent from '../content/HomeContent';
-import BookContent from '../content/BookContent';
 import BookResultsContent from '../content/BookResultsContent';
+import ErrorAlert from '../ErrorAlert';
 import BookSearchForm from '../BookSearchForm';
 
 function BookResultsPage() {
 
     const [bookSearch, setSearch] = useSearchParams();
     const [bookResults, setBookResults] = useState([]);
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const titleSearch = bookSearch.get('title') ? bookSearch.get('title') : '';
         const authorSearch = bookSearch.get('author') ? bookSearch.get('author') : '';
         let token = localStorage.getItem("token");
         fetch("http://localhost:5000/search_books", {
-            method:'POST',
+            method: 'POST',
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
             },
-            body:JSON.stringify({
-                title_search:titleSearch,
-                author_search:authorSearch
+            body: JSON.stringify({
+                title_search: titleSearch,
+                author_search: authorSearch
             })
         })
             .then((res) => {
@@ -37,12 +34,10 @@ function BookResultsPage() {
                 }
             })
             .then((data) => {
-                console.log(data);
                 setBookResults(data);
             })
             .catch((err) => {
-                console.error(err);
-                
+                setError(err);
             });
     }, [bookSearch]);
 
@@ -50,7 +45,11 @@ function BookResultsPage() {
         <>
             <NavBarUser />
             <BookSearchForm />
-            <BookResultsContent books={bookResults}/>
+            {error && error.length && error.length > 0 ?
+                <ErrorAlert id="auto-hide-message" errors={error} />
+                :
+                null}
+            <BookResultsContent books={bookResults} />
         </>
     )
 }

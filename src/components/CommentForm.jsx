@@ -1,17 +1,11 @@
-import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
-import React, { useState, useEffect } from 'react';
-import { setCommentsUpdate } from './state/user';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
 
 function CommentForm({ post, handleError, handleNewComment }) {
 
     const [commentContent, setCommentContent] = useState('');
-    const dispatch = useDispatch();
-    const userRedux = useSelector((state)=>state.user);
 
     const {id, user} = post;
     const {username} = user;
-    console.log(post);
 
     const handleCommentChange = (e) => {
         const newComment = e.target.value;
@@ -41,7 +35,6 @@ function CommentForm({ post, handleError, handleNewComment }) {
             }
         })
             .then((data) => {
-                console.log(data);
                 handleNewComment(data);
                 setCommentContent('');
             })

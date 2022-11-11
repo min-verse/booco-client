@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
 function StatsVerticalComponent({ genres, moods, posts, comments }) {
 
@@ -7,14 +6,14 @@ function StatsVerticalComponent({ genres, moods, posts, comments }) {
     const [mood, setMood] = useState('N/A');
     const [postsMade, setPostsMade] = useState(0);
     const [commentsMade, setCommentsMade] = useState(0);
-    
+
 
     useEffect(() => {
         if (genres) {
-            setGenre(Object.keys(genres).reduce((a, b) => genres[a] > genres[b] ? a : b,0));
+            setGenre(Object.keys(genres).reduce((a, b) => genres[a] > genres[b] ? a : b, 0));
         }
         if (moods) {
-            setMood(Object.keys(moods).reduce((a, b) => moods[a] > moods[b] ? a : b,0));
+            setMood(Object.keys(moods).reduce((a, b) => moods[a] > moods[b] ? a : b, 0));
         }
 
         if (posts && posts.length) {
@@ -29,7 +28,6 @@ function StatsVerticalComponent({ genres, moods, posts, comments }) {
     return (
         <>
             <div className="custom-stats-name-vertical bg-violet-50 my-12 stats stats-vertical shadow">
-
                 <div className="stat">
                     <div className="stat-figure text-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
@@ -61,7 +59,6 @@ function StatsVerticalComponent({ genres, moods, posts, comments }) {
                     <div className="stat-title">Posts made</div>
                     <div className="stat-desc text-secondary">and {commentsMade} comments</div>
                 </div>
-
             </div>
         </>
     );

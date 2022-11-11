@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import SignupModal from './SignupModal';
-import SignupModalNavBar from './SignUpModalNavBar';
 import LoginModal from './LoginModal';
 import { ReactComponent as BoocoSvg } from '../assets/booco-logo.svg';
-import { Navbar, Dropdown, Button, Menu } from 'react-daisyui';
+import { Navbar, Dropdown, Button } from 'react-daisyui';
 
 function NavBarLanding() {
 

@@ -1,6 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import FriendRowComponent from './FriendRowComponent';
-import PendingRowComponent from './PendingRowComponent';
+import React from 'react';
 import ToReadRowComponent from './ToReadRowComponent';
 
 function ToReadTableComponent({ readings }) {

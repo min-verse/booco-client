@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import PostCard from './PostCard';
 
 function PostList({posts}){

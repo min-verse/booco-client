@@ -1,5 +1,4 @@
-import { faArrowAltCircleRight } from '@fortawesome/free-solid-svg-icons';
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 function PostForm({ book, handlePostSubmit }) {
 
@@ -16,7 +15,7 @@ function PostForm({ book, handlePostSubmit }) {
         setPostContent(newPost);
     };
 
-    const { id, title, author } = book;
+    const { id, title } = book;
 
     function submitPost(e) {
         e.preventDefault();
@@ -41,7 +40,6 @@ function PostForm({ book, handlePostSubmit }) {
             }
         })
             .then((data) => {
-                console.log(data);
                 handlePostSubmit(data);
                 setPostTitle('');
                 setPostContent('');

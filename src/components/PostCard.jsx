@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react';
 import { useNavigate } from 'react-router';
 
 function PostCard({post}){
@@ -12,7 +11,7 @@ function PostCard({post}){
         navigateToPost()
     }
 
-    const {id, title, user, content, created_at, number_of_comments, time} = post
+    const {id, title, user, content, number_of_comments, time} = post
     const {username} = user;
 
     return (

@@ -1,11 +1,7 @@
-import { Fragment, useEffect, useState } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import NavBarLanding from '../NavBarLanding';
 import LandingContent from '../content/LandingContent';
-
-import { useSelector } from 'react-redux';
 
 function LandingPage() {
 
@@ -17,7 +13,6 @@ function LandingPage() {
   }
 
   useEffect(() => {
-
     let token = localStorage.getItem("token");
     if (token) {
       goToUserHome();

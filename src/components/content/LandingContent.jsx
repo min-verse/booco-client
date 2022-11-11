@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import SignupModal from '../SignupModal';
-import { Hero, Button, Toast } from 'react-daisyui';
+import { Hero, Button } from 'react-daisyui';
 import Typewriter from 'typewriter-effect';
 
 function LandingContent() {

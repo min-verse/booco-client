@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { setUser, clearUser, setReadings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
+import { setUser, setReadings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
 
 function LoginForm({ handleError }) {
 
@@ -17,13 +17,11 @@ function LoginForm({ handleError }) {
 
     function handleEmailChange(e) {
         const newEmail = e.target.value;
-        console.log(email);
         setEmail(newEmail);
     }
 
     function handlePasswordChange(e) {
         const newPassword = e.target.value;
-        console.log(password);
         setPassword(newPassword);
     }
 
@@ -44,7 +42,6 @@ function LoginForm({ handleError }) {
         })
             .then((res) => {
                 if (res.ok) {
-                    console.log(res.headers.get("Authorization"));
                     localStorage.setItem("token", res.headers.get("Authorization"));
                     return res.json();
                 } else {
@@ -68,7 +65,6 @@ function LoginForm({ handleError }) {
                 }
             }).catch((err) => {
                 setLoading(false);
-                console.log(typeof err);
                 handleError(err);
             });
     }

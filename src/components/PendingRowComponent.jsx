@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { setUser, clearUser, setReadings, setOutgoings, setFriends, setPosts, setComments, setPendings, setPendingsUpdate, setGenres, setMoods, setFriendsUpdate } from './state/user';
+import React, { useState } from 'react';
+import { setFriends, setPendings } from './state/user';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -9,8 +9,8 @@ function PendingRowComponent({ pendingData, handleError }) {
     const [loading, setLoading] = useState(false);
     const dispatch = useDispatch();
 
-    async function handleAccept(){
-        try{
+    async function handleAccept() {
+        try {
             setLoading(true);
             let token = localStorage.getItem("token");
             if (token) {
@@ -22,7 +22,6 @@ function PendingRowComponent({ pendingData, handleError }) {
                     }
                 }).then(res => res.json())
                     .then((data) => {
-                        console.log(data);
                         setLoading(false);
                         handleError('');
                         dispatch(setPendings(data));
@@ -32,14 +31,14 @@ function PendingRowComponent({ pendingData, handleError }) {
                 setLoading(false);
                 alert("You are not logged in.");
             }
-        }catch(err){
-            setLoading(false); 
+        } catch (err) {
+            setLoading(false);
             handleError(err);
         }
     }
 
-    async function handleDecline(){
-        try{
+    async function handleDecline() {
+        try {
             setLoading(true);
             let token = localStorage.getItem("token");
             if (token) {
@@ -51,22 +50,21 @@ function PendingRowComponent({ pendingData, handleError }) {
                     }
                 }).then(res => res.json())
                     .then((data) => {
-                    console.log(data);
-                    if(!data['error']){
-                        setLoading(false);
-                        handleError('');
-                        dispatch(setPendings(data));
-                    }else if(data['error']){
-                        setLoading(false);
-                        handleError(data['error']);
-                    }
+                        if (!data['error']) {
+                            setLoading(false);
+                            handleError('');
+                            dispatch(setPendings(data));
+                        } else if (data['error']) {
+                            setLoading(false);
+                            handleError(data['error']);
+                        }
                     });
             } else {
                 setLoading(false);
                 alert("You are not logged in.");
             }
-        }catch(err){
-            setLoading(false); 
+        } catch (err) {
+            setLoading(false);
             handleError(err);
         }
     }

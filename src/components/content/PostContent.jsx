@@ -1,17 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import SignupModal from '../SignupModal';
 import { Link } from 'react-router-dom';
-import { setComments } from '../state/user';
-import { Hero, Button, Toast, Artboard } from 'react-daisyui';
 import { setCommentsUpdate } from '../state/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
-import Typewriter from 'typewriter-effect';
 import { useSelector, useDispatch } from 'react-redux';
-import ReadingCard from '../ReadingCard';
-import BookCard from '../BookCard';
-import PostList from '../PostList';
 import CommentList from '../CommentList';
 import CommentForm from '../CommentForm';
 import ErrorAlert from '../ErrorAlert';
@@ -24,7 +17,7 @@ function PostContent({ postId }) {
     const [error, setError] = useState('');
     const [comments, setComments] = useState([]);
     const dispatch = useDispatch();
-    const user = useSelector((state)=>state.user);
+    const user = useSelector((state) => state.user);
     const navigate = useNavigate();
     const goToLanding = () => {
         navigate("/");
@@ -49,7 +42,6 @@ function PostContent({ postId }) {
                         }
                     })
                     .then((data) => {
-                        console.log(data);
                         setCurrentPost(data);
                         setPostAuthor(data['user']);
                         setComments(data['comments']);
@@ -62,11 +54,6 @@ function PostContent({ postId }) {
         getPost();
     }, []);
 
-    const handlePostSubmit = (e) => {
-        e.preventDefault();
-        console.log("I'm submitted!");
-    };
-
     const handleError = (err) => {
         setError(err);
     };
@@ -75,7 +62,6 @@ function PostContent({ postId }) {
         setComments((prevComments) => {
             return [...prevComments, obj];
         });
-        // check this line of code later haha
         dispatch(setCommentsUpdate([...user['comments'], obj]));
     };
 
@@ -89,20 +75,9 @@ function PostContent({ postId }) {
                         <ErrorAlert />
                         :
                         null}
-                    {/* <h1 style={{
-                        fontSize: 30,
-                        fontStyle: 'italic',
-                        paddingLeft: 50
-                    }}>{postId}</h1> */}
                     <div className="post-card-container">
                         {currentPost &&
                             <PostPageCard currentPost={currentPost} postAuthor={postAuthor} />
-                            // <div style={{ padding: 20 }}>
-                            //     <h1 className="post-title">{currentPost['title']}</h1>
-                            //     <small><em>written by:</em> {postAuthor['username']}</small>
-                            //     <p className="post-content">{currentPost['content']}</p>
-                            //     <small>on <em>{currentPost['time']}</em></small>
-                            // </div>
                         }
                     </div>
                     <CommentForm handleError={handleError} post={currentPost} handleNewComment={handleNewComment} />

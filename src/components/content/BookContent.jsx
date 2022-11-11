@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import SignupModal from '../SignupModal';
-import { Link } from 'react-router-dom';
-import { Hero, Button, Toast, Artboard } from 'react-daisyui';
-import Typewriter from 'typewriter-effect';
 import { setPostsUpdate } from '../state/user';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import ReadingCard from '../ReadingCard';
 import PostForm from '../PostForm';
 import BookCard from '../BookCard';
 import PostList from '../PostList';
@@ -60,17 +55,11 @@ function BookContent({ bookId }) {
         setPosts((prevPosts) => {
             return [obj, ...prevPosts];
         })
-        // check this line of code later
         dispatch(setPostsUpdate([...user['posts'], obj]));
     };
 
     return (
         <>
-            {/* <h1 style={{
-                fontSize: 30,
-                fontStyle: 'italic',
-                paddingLeft: 50
-            }}>{bookId}</h1> */}
             <div className="book-page">
                 {currentBook && <BookCard book={currentBook} />}
             </div>

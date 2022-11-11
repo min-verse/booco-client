@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { setUser, clearUser, setReadings, setReadingsUpdate, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
+import { setReadingsUpdate } from './state/user';
 import { useDispatch, useSelector } from 'react-redux';
 import ErrorAlert from './ErrorAlert';
 import { Link } from 'react-router-dom';
@@ -41,7 +41,6 @@ function BookResultCard({ book }) {
                     .then((data) => {
                         setError('');
                         setLoading(false);
-                        console.log(data);
                         setInLibrary(true);
                         dispatch(setReadingsUpdate(data));
                     });

@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
-import SignupModal from './SignupModal';
-import LoginModal from './LoginModal';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUser, clearUser, setReadings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
+import { clearUser } from './state/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import { ReactComponent as BoocoSvg } from '../assets/booco-logo.svg';
-import { Navbar, Dropdown, Button, Menu, Form, Input } from 'react-daisyui';
-import { Link, useNavigate, useSearchParams } from 'react-router-dom';
+import { Navbar, Dropdown, Button, Form, Input } from 'react-daisyui';
+import { Link, useNavigate } from 'react-router-dom';
 
 function NavBarUser() {
 
@@ -25,14 +23,6 @@ function NavBarUser() {
 
     function goToResults(query) {
         navigate(`/browse?title=${query}`);
-    }
-
-    const toggleRegisterVisible = () => {
-        setRegisterVisible(!registerVisible)
-    };
-
-    const toggleLoginVisible = () => {
-        setLoginVisible(!loginVisible)
     }
 
     const handleSearchChange = (e) => {
@@ -63,7 +53,6 @@ function NavBarUser() {
                     }
                 })
                 .then((json) => {
-                    console.dir(json);
                     localStorage.removeItem("token");
                     dispatch(clearUser());
                     goToLanding();
@@ -112,7 +101,6 @@ function NavBarUser() {
                     </Dropdown>
                     <BoocoSvg className="pb-1" />
                     <Link to="/home" className="btn btn-ghost normal-case text-xl">BOOCO</Link>
-                    {/* <a className="btn btn-ghost normal-case text-xl">BOOCO</a> */}
                     <Form className="nav-mid-search-bar" style={{marginLeft: 10, marginBottom:3}} onSubmit={handleSearch}>
                         <Input
                             onChange={handleSearchChange}
@@ -123,26 +111,7 @@ function NavBarUser() {
                             placeholder="Search Books" />
                     </Form>
                 </Navbar.Start>
-                {/* <Form className="nav-mid-search-bar" style={{marginBottom:5}} onSubmit={handleSearch}>
-                        <Input
-                            onChange={handleSearchChange}
-                            value={bookSearch}
-                            name="search"
-                            bordered
-                            type="text"
-                            placeholder="Search Books" />
-                    </Form> */}
                 <Navbar.End className="navbar-user-end">
-                    {/* <h1 style={{marginRight:12}}>Welcome Back, {user['profile']['username']}</h1> */}
-                    {/* <Form style={{marginBottom:5}} onSubmit={handleSearch}>
-                        <Input
-                            onChange={handleSearchChange}
-                            value={bookSearch}
-                            name="search"
-                            bordered
-                            type="text"
-                            placeholder="Search Books" />
-                    </Form> */}
                     <Dropdown vertical="end">
                         <Button color="ghost" className="avatar" shape="circle">
                             <div className="mask mask-squircle w-12 h-12">
@@ -160,13 +129,6 @@ function NavBarUser() {
                             }</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
-                    {/* {loading ?
-                        <Button className="ml-4" disabled>Logging Out... 
-                        <span className="animate-spin"><FontAwesomeIcon style={{color:'white', marginLeft:8}} icon={faSpinner} /></span>
-                        </Button>
-                        :
-                        <Button className="ml-4" onClick={handleLogOut}>Log Out</Button>
-                    } */}
                 </Navbar.End>
             </Navbar>
         </div>

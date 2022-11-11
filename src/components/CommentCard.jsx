@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function CommentCard({ comment }) {
 
-    const { id, content, created_at, time, get_user, get_post } = comment;
-    console.log(comment);
+    const { content, time, get_user } = comment;
 
     return (
         <>

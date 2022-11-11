@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 
 function BookCardTopContent({book, handleSelect, loading}) {
 
-    const { id, title, author, total_pages, publisher, year_published, genres, moods, description, cover, ISBN, posts } = book;
+    const { title, author, total_pages, publisher, year_published, genres, moods, description, ISBN } = book;
 
     const [visible, setVisible] = useState(false);
 

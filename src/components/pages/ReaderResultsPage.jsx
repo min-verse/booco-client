@@ -1,12 +1,7 @@
-import React, { Fragment, useState, useEffect } from 'react'
-import { Popover, Transition } from '@headlessui/react'
-import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
+import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import NavBarLanding from '../NavBarLanding';
 import NavBarUser from '../NavBarUser';
-import HomeContent from '../content/HomeContent';
-import BookContent from '../content/BookContent';
-import BookResultsContent from '../content/BookResultsContent';
+import ErrorAlert from '../ErrorAlert';
 import ReaderResultsContent from '../content/ReaderResultsContent';
 import UserSearchForm from '../UserSearchForm';
 
@@ -14,20 +9,20 @@ function ReaderResultsPage() {
 
     const [readerSearch, setReaderSearch] = useSearchParams();
     const [readerResults, setReaderResults] = useState([]);
-    console.log(readerSearch.get('user'));
+    const [error, setError] = useState('');
 
     useEffect(() => {
         const userSearch = readerSearch.get('user') ? readerSearch.get('user') : '';
-        
+
         let token = localStorage.getItem("token");
         fetch("http://localhost:5000/search_readers", {
-            method:'POST',
+            method: 'POST',
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
             },
-            body:JSON.stringify({
-                reader_search:userSearch,
+            body: JSON.stringify({
+                reader_search: userSearch,
             })
         })
             .then((res) => {
@@ -38,20 +33,22 @@ function ReaderResultsPage() {
                 }
             })
             .then((data) => {
-                console.log(data);
                 setReaderResults(data);
             })
             .catch((err) => {
-                console.error(err);
-                
+                setError(err);
             });
     }, [readerSearch]);
 
     return (
         <>
             <NavBarUser />
+            {error && error.length && error.length > 0 ?
+                <ErrorAlert id="auto-hide-message" errors={error} />
+                :
+                null}
             <UserSearchForm />
-            <ReaderResultsContent readers={readerResults}/>
+            <ReaderResultsContent readers={readerResults} />
         </>
     )
 }

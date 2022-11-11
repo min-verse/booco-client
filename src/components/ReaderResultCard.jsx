@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { setUser, clearUser, setReadings, setPendingsUpdate, setOutgoingsUpdate, setReadingsUpdate, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
+import { setOutgoingsUpdate } from './state/user';
 import { useDispatch, useSelector } from 'react-redux';
 import ErrorAlert from './ErrorAlert';
 import { Link, useNavigate } from 'react-router-dom';
@@ -14,6 +14,7 @@ function ReaderResultCard({ reader }) {
     const { id, username, avatar, readings } = reader;
     console.log(reader);
     const user = useSelector((state) => state.user);
+    console.log(user);
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const goToLanding = () => {
@@ -21,18 +22,28 @@ function ReaderResultCard({ reader }) {
     }
 
     useEffect(() => {
+
         if (user['friends'] && user['friends'].length && user['friends'].length > 0) {
             const addedFriend = user['friends'].find(reader => reader['friend']['id'] === id);
-            const pendingFriend = user['pendings'].find(reader => reader['friend']['id'] === id);
-            const outgoingFriend = user['outgoings'].find(reader => reader['friend']['id'] === id);
             if (addedFriend) {
                 setInFriends(true);
-            } else if (pendingFriend) {
+            }
+        }
+
+        if (user['pendings'] && user['pendings'].length && user['pendings'].length > 0) {
+            const pendingFriend = user['pendings'].find(reader => reader['friend']['id'] === id);
+            if (pendingFriend) {
                 setInPending(true);
-            } else if (outgoingFriend) {
+            }
+        }
+
+        if (user['outgoings'] && user['outgoings'].length && user['outgoings'].length > 0) {
+            const outgoingFriend = user['outgoings'].find(reader => reader['friend']['id'] === id);
+            if (outgoingFriend) {
                 setInOutgoing(true);
             }
         }
+
     }, [user]);
 
     const handleSendRequest = async () => {
@@ -77,56 +88,56 @@ function ReaderResultCard({ reader }) {
                         <img src={avatar ? avatar : "https://i.imgur.com/KhYI6SH.jpg"} alt="Avatar Tailwind CSS Component" />
                     </div>
                 </div>
-                <div style={{display:'flex', flexDirection:'column'}}>
-                <div>
-                <h1>{username}</h1>
-                <h3>Their Recent Reads:</h3>
-                {readings && readings.length ?
-                    readings.length > 5 ?
-                        <p>{readings.map((book, index) => {
-                            if (index < 5) {
-                                return (
-                                    <span key={index}>{book['book']['title']}, </span>
-                                );
-                            } else if (index === 5) {
-                                return (
-                                    <span key={index}>{book['book']['title']}</span>
-                                );
-                            }
-                        })}</p>
-                        :
-                        <p>{readings.map((book, index) => {
-                            if (index < readings.length) {
-                                return (
-                                    <span key={index}>{book['book']['title']}, </span>
-                                );
-                            } else {
-                                return (
-                                    <span key={index}>{book['book']['title']}</span>
-                                );
-                            }
-                        })}</p>
-                    :
-                    <p>This reader hasn't added any books yet</p>
-                }
-                </div>
-                <div>
-                    <Link className="btn reader-result-card-button" to={`/readers/${id}`}>See Profile</Link>
-                    {inFriends ?
-                        <button className="btn reader-result-card-button" disabled>Already Friends</button>
-                        :
-                        inPending ?
-                            <button className="btn reader-result-card-button" disabled>In Your Pending</button>
-                            :
-                            inOutgoing ?
-                                <button className="btn reader-result-card-button" disabled>Already Requested</button>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div>
+                        <h1>{username}</h1>
+                        <h3>Their Recent Reads:</h3>
+                        {readings && readings.length ?
+                            readings.length > 5 ?
+                                <p>{readings.map((book, index) => {
+                                    if (index < 5) {
+                                        return (
+                                            <span key={index}>{book['book']['title']}, </span>
+                                        );
+                                    } else if (index === 5) {
+                                        return (
+                                            <span key={index}>{book['book']['title']}</span>
+                                        );
+                                    }
+                                })}</p>
                                 :
-                                loading ?
-                                    <button className="btn reader-result-card-button" disabled>Sending Request...</button>
+                                <p>{readings.map((book, index) => {
+                                    if (index < readings.length) {
+                                        return (
+                                            <span key={index}>{book['book']['title']}, </span>
+                                        );
+                                    } else {
+                                        return (
+                                            <span key={index}>{book['book']['title']}</span>
+                                        );
+                                    }
+                                })}</p>
+                            :
+                            <p>This reader hasn't added any books yet</p>
+                        }
+                    </div>
+                    <div>
+                        <Link className="btn reader-result-card-button" to={`/readers/${id}`}>See Profile</Link>
+                        {inFriends ?
+                            <button className="btn reader-result-card-button" disabled>Already Friends</button>
+                            :
+                            inPending ?
+                                <button className="btn reader-result-card-button" disabled>In Your Pending</button>
+                                :
+                                inOutgoing ?
+                                    <button className="btn reader-result-card-button" disabled>Already Requested</button>
                                     :
-                                    <button className="btn reader-result-card-button" onClick={handleSendRequest}>Send Friend Request</button>
-                    }
-                </div>
+                                    loading ?
+                                        <button className="btn reader-result-card-button" disabled>Sending Request...</button>
+                                        :
+                                        <button className="btn reader-result-card-button" onClick={handleSendRequest}>Send Friend Request</button>
+                        }
+                    </div>
                 </div>
             </div>
         </div>

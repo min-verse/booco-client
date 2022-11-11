@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { setUser, clearUser, setReadings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
+import { useDispatch } from 'react-redux';
+import { setUser } from './state/user';
 
 function SignupFormNavBar({ handleError }) {
 
@@ -9,21 +9,7 @@ function SignupFormNavBar({ handleError }) {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [loading, setLoading] = useState(false);
-    const [errors, setErrors] = useState('');
     const dispatch = useDispatch();
-
-    const avatarHash = {
-        "Default Avatar": "https://i.imgur.com/KhYI6SH.jpg",
-        "Human - Azure": "https://i.imgur.com/5skGPs8.png",
-        "Human - Magenta": "https://i.imgur.com/44ctm99.png",
-        "Human - Citrus": "https://i.imgur.com/nFWDwXy.png",
-        "Pigeon Beanie": "https://i.imgur.com/y3PH86q.png",
-        "Pigeon Surf's Up": "https://i.imgur.com/bskXjBK.png",
-        "Pigeon Masquerade": "https://i.imgur.com/gy1tAqU.png",
-        "Cat - Purple": "https://i.imgur.com/Vf8YVwu.png",
-        "Cat - Cyan": "https://i.imgur.com/zAb8VZN.png",
-        "Cat - Yellow Visor": "https://i.imgur.com/Jq8NXNl.png"
-    };
 
     function handleExampleClick(e) {
         e.preventDefault();
@@ -35,36 +21,27 @@ function SignupFormNavBar({ handleError }) {
 
     function handleUsernameChange(e) {
         const newUsername = e.target.value;
-        console.log(username);
         setUsername(newUsername);
     }
 
     function handleEmailChange(e) {
         const newEmail = e.target.value;
-        console.log(email);
         setEmail(newEmail);
     }
 
     function handlePasswordChange(e) {
         const newPassword = e.target.value;
-        console.log(password);
         setPassword(newPassword);
     }
 
     function handleConfirmPasswordChange(e) {
         const newConfirmPassword = e.target.value;
-        console.log(newConfirmPassword);
         setConfirmPassword(newConfirmPassword);
     }
 
     async function handleSubmit(e) {
         e.preventDefault();
         setLoading(true);
-        // const formData = new FormData();
-        // let photoInput = document.getElementById('profile-photo-input-nav');
-        // if(photoInput.files[0]){
-            
-        // }
         if (password !== confirmPassword) {
             setLoading(false);
             handleError("Passwords do not match. Unable to register new reader.");
@@ -158,20 +135,6 @@ function SignupFormNavBar({ handleError }) {
                                             className="mt-1 p-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
                                         />
                                     </div>
-
-                                    {/* <div className="col-span-6">
-                                        <label htmlFor="profile-picture" className="block text-sm font-medium text-gray-700">
-                                            Upload Profile Picture
-                                        </label>
-                                        <input
-                                            id="profile-photo-input-nav"
-                                            type="file"
-                                            accept="image/png, image/jpeg"
-                                            name="profilePicture"
-                                            multiple={false}
-                                            className="mt-1 p-3 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                                        />
-                                    </div> */}
 
                                 </div>
                             </div>

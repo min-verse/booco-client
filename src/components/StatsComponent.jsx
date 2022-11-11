@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
 
-function StatsComponent({genres, moods, posts, comments}) {
+function StatsComponent({ genres, moods, posts, comments }) {
 
     const [genre, setGenre] = useState('N/A');
     const [mood, setMood] = useState('N/A');
@@ -11,11 +10,9 @@ function StatsComponent({genres, moods, posts, comments}) {
 
     useEffect(() => {
         if (genres) {
-            // console.log(Object.keys(user['genres']).reduce((a, b) => user['genres'][a] > user['genres'][b] ? a : b, 0))
             setGenre(Object.keys(genres).reduce((a, b) => genres[a] > genres[b] ? a : b, 0));
         }
         if (moods) {
-            // console.log(Object.keys(user['moods']).reduce((a, b) => user['moods'][a] > user['moods'][b] ? a : b, 0));
             setMood(Object.keys(moods).reduce((a, b) => moods[a] > moods[b] ? a : b, 0));
         }
 
@@ -27,10 +24,10 @@ function StatsComponent({genres, moods, posts, comments}) {
             setCommentsMade(comments.length);
         }
     }, []);
+
     return (
         <>
             <div className="stat-component-horizontal bg-violet-50 my-12 stats shadow">
-
                 <div className="stat">
                     <div className="stat-figure text-primary">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
@@ -62,7 +59,6 @@ function StatsComponent({genres, moods, posts, comments}) {
                     <div className="stat-title">Posts made</div>
                     <div className="stat-desc text-secondary">and {commentsMade} comments</div>
                 </div>
-
             </div>
         </>
     );
