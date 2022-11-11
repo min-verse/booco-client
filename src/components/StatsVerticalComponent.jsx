@@ -7,14 +7,14 @@ function StatsVerticalComponent({ genres, moods, posts, comments }) {
     const [mood, setMood] = useState('N/A');
     const [postsMade, setPostsMade] = useState(0);
     const [commentsMade, setCommentsMade] = useState(0);
-    const user = useSelector((state) => state.user);
+    
 
     useEffect(() => {
-        if (genres && genres.length) {
-            setGenre(Object.keys(genres).reduce((a, b) => genres[a] > genres[b] ? a : b));
+        if (genres) {
+            setGenre(Object.keys(genres).reduce((a, b) => genres[a] > genres[b] ? a : b,0));
         }
-        if (moods & moods.length) {
-            setMood(Object.keys(moods).reduce((a, b) => moods[a] > moods[b] ? a : b));
+        if (moods) {
+            setMood(Object.keys(moods).reduce((a, b) => moods[a] > moods[b] ? a : b,0));
         }
 
         if (posts && posts.length) {
@@ -24,7 +24,7 @@ function StatsVerticalComponent({ genres, moods, posts, comments }) {
         if (comments && comments.length) {
             setCommentsMade(comments.length);
         }
-    }, [user]);
+    }, []);
 
     return (
         <>
@@ -53,7 +53,7 @@ function StatsVerticalComponent({ genres, moods, posts, comments }) {
                     <div className="stat-figure text-secondary">
                         <div className="avatar">
                             <div className="w-16 rounded-full">
-                                <img src="https://placeimg.com/128/128/people" />
+                                <img src="https://i.imgur.com/GSOTbXl.png" />
                             </div>
                         </div>
                     </div>

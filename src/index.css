@@ -10,7 +10,6 @@ body {
     background-image: linear-gradient(to left, #feffff, #feffff);
 }
 
-
 .sign-up-dropdown{
     margin-top:10px;
     display: flex;
@@ -252,6 +251,7 @@ body {
 .book-reading-button {
     display: flex;
     justify-content: flex-end;
+    align-self: center;
     align-items: flex-end;
     flex-direction: row;
     margin-bottom: 12px;

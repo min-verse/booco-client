@@ -1,30 +1,32 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 
-function StatsComponent() {
+function StatsComponent({genres, moods, posts, comments}) {
 
     const [genre, setGenre] = useState('N/A');
     const [mood, setMood] = useState('N/A');
     const [postsMade, setPostsMade] = useState(0);
     const [commentsMade, setCommentsMade] = useState(0);
-    const user = useSelector((state) => state.user);
+    console.log(posts)
 
     useEffect(() => {
-        if (user['genres'] && user['genres'].length) {
-            setGenre(Object.keys(user['genres']).reduce((a, b) => user['genres'][a] > user['genres'][b] ? a : b));
+        if (genres) {
+            // console.log(Object.keys(user['genres']).reduce((a, b) => user['genres'][a] > user['genres'][b] ? a : b, 0))
+            setGenre(Object.keys(genres).reduce((a, b) => genres[a] > genres[b] ? a : b, 0));
         }
-        if (user['moods'] && user['moods'].length) {
-            setMood(Object.keys(user['moods']).reduce((a, b) => user['moods'][a] > user['moods'][b] ? a : b));
-        }
-
-        if (user['posts'] && user['posts'].length) {
-            setPostsMade(user['posts'].length);
+        if (moods) {
+            // console.log(Object.keys(user['moods']).reduce((a, b) => user['moods'][a] > user['moods'][b] ? a : b, 0));
+            setMood(Object.keys(moods).reduce((a, b) => moods[a] > moods[b] ? a : b, 0));
         }
 
-        if (user['comments'] && user['comments'].length) {
-            setCommentsMade(user['comments'].length);
+        if (posts && posts.length) {
+            setPostsMade(posts.length);
         }
-    }, [user]);
+
+        if (comments && comments.length) {
+            setCommentsMade(comments.length);
+        }
+    }, []);
     return (
         <>
             <div className="stat-component-horizontal bg-violet-50 my-12 stats shadow">
@@ -52,7 +54,7 @@ function StatsComponent() {
                     <div className="stat-figure text-secondary">
                         <div className="avatar">
                             <div className="w-16 rounded-full">
-                                <img src="https://cdn-icons-png.flaticon.com/512/1665/1665628.png" />
+                                <img src="https://i.imgur.com/GSOTbXl.png" />
                             </div>
                         </div>
                     </div>

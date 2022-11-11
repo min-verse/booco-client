@@ -45,6 +45,7 @@ function BookCardTopContent({book, handleSelect, loading}) {
                         }
 
                     })}</p>
+                    
                 </div>
                 <div className="book-reading-button">
 
@@ -59,7 +60,7 @@ function BookCardTopContent({book, handleSelect, loading}) {
 
                         :
                         <form onSubmit={handleSelect} style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                            <select name="select-status" className="select select-info w-full max-w-xs book-reading-select">
+                            <select name="select-status" className="select select-info max-w-xs book-reading-select">
                                 <option disabled defaultValue>Select status</option>
                                 <option value="to-read">to-read</option>
                                 <option value="reading">reading</option>

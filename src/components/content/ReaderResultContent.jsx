@@ -27,9 +27,8 @@ function ReaderResultContent({ reader, status }) {
     const [havePendings, setHavePendings] = useState(false);
     const user = useSelector((state) => state.user);
     console.log(reader);
-    const { id, readings, to_reads, completed, friends, genres, moods, posts } = reader;
+    const { id, readings, to_reads, completed, comments, friends, genres, moods, posts } = reader;
     const navigate = useNavigate();
-    console.log(user);
 
     function goToReaderSearch(query) {
         navigate(`/readersearch?user=${query}`);
@@ -97,15 +96,15 @@ function ReaderResultContent({ reader, status }) {
 
             <div className="home-third-section">
                 <StatsComponent
-                    genres={user['genres']}
-                    moods={user['moods']}
-                    posts={user['posts']}
-                    comments={user['comments']} />
+                    genres={genres}
+                    moods={moods}
+                    posts={posts}
+                    comments={comments} />
                 <StatsVerticalComponent
-                    genres={user['genres']}
-                    moods={user['moods']}
-                    posts={user['posts']}
-                    comments={user['comments']} />
+                    genres={genres}
+                    moods={moods}
+                    posts={posts}
+                    comments={comments} />
             </div>
         </>
     )
