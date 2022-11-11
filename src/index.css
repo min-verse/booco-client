@@ -93,6 +93,7 @@ body {
 
 /* Book Card Styling */
 .book-page {
+    margin-top:30px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -361,16 +362,18 @@ body {
     /* width: 800px; */
     /* object-fit: contain; */
     display: flex;
+    align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: 100%;
+    width:100%;
     margin: 5px;
 
 }
 
 .book-card-image {
-    height: 100%;
-    border-radius: 5px;
+    
+    align-self: center;
+    border-radius: 10px;
 }
 
 .book-card-info {

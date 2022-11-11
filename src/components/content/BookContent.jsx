@@ -66,11 +66,11 @@ function BookContent({ bookId }) {
 
     return (
         <>
-            <h1 style={{
+            {/* <h1 style={{
                 fontSize: 30,
                 fontStyle: 'italic',
                 paddingLeft: 50
-            }}>{bookId}</h1>
+            }}>{bookId}</h1> */}
             <div className="book-page">
                 {currentBook && <BookCard book={currentBook} />}
             </div>

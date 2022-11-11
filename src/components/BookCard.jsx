@@ -151,7 +151,9 @@ function BookCard({ book }) {
         <>
             <div className="book-top-container">
                 <div className="book-card-image-container">
-                    <img src={cover} className="book-card-image" />
+                    <div>
+                        <img src={cover} className="book-card-image" />
+                    </div>
                     {inReading &&
                         <div className="progress-status-block">
                             <div>
