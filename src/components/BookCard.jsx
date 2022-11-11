@@ -7,6 +7,8 @@ import { setUser, clearUser, setReadings, setReadingsUpdate, setFriends, setPost
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import PostList from './PostList';
+import ProgressForm from './ProgressForm';
+import BookCardTopContent from './BookCardTopContent';
 
 function BookCard({ book }) {
 
@@ -75,11 +77,11 @@ function BookCard({ book }) {
         }
     }
 
-    const handleReadingDelete = async () =>{
+    const handleReadingDelete = async () => {
         setLoading(true)
-        try{
+        try {
             let token = localStorage.getItem("token");
-            if(token){
+            if (token) {
                 await fetch(`http://localhost:5000/readings/${id}`, {
                     method: 'DELETE',
                     headers: {
@@ -100,7 +102,7 @@ function BookCard({ book }) {
                         }
                     });
             }
-        }catch(error){
+        } catch (error) {
             setError(error);
         }
     };
@@ -151,26 +153,37 @@ function BookCard({ book }) {
                 <div className="book-card-image-container">
                     <img src={cover} className="book-card-image" />
                     {inReading &&
-                        <div>
-                            {status === "reading" &&
-                                <>
-                                    <Progress className="progress-accent bg-[#d1d5db]" value={currentProgress} max={100} />
-                                    <form onSubmit={handlePageSubmit}>
-                                        <input type="number" name="pageCount" min={0} max={total_pages} className="peer w-full" placeholder="Set pages read"></input>
-                                        <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
-                                            Page not in range {0} to {total_pages}.
-                                        </p>
-                                        <button type="submit" className="btn">Set Pages</button>
-                                    </form>
-                                </>
-                            }
-                            <small style={{ fontStyle: "italic" }}>Already in shelf</small>
-                            <p className="btn" disabled>{status}</p>
-                            {loading ? 
-                            <button className="btn btn-error" disabled>Removing...</button>
-                            :
-                            <button onClick={handleReadingDelete} className="btn btn-error">Remove</button>
-                            }
+                        <div className="progress-status-block">
+                            <div>
+                                {status === "reading" &&
+                                    <>
+                                        <Progress className="progress-accent bg-[#d1d5db]" value={currentProgress} max={100} />
+                                        <ProgressForm handlePageSubmit={handlePageSubmit} total_pages={total_pages} />
+                                        {/* <div>
+                                        <form onSubmit={handlePageSubmit}>
+                                            <input type="number" name="pageCount" min={0} max={total_pages} className="peer w-full" placeholder="Set pages read"></input>
+                                            <p className="mt-2 invisible peer-invalid:visible text-pink-600 text-sm">
+                                                Page not in range {0} to {total_pages}.
+                                            </p>
+                                            <button type="submit" className="btn">Set Pages</button>
+                                        </form>
+                                    </div> */}
+                                    </>
+                                }
+                            </div>
+                            <div className="status-container">
+                                <div>
+                                    <p className="in-shelf-text">Already in shelf</p>
+                                </div>
+                                <div className="status-buttons">
+                                    <p className="btn status-buttons" disabled>{status}</p>
+                                    {loading ?
+                                        <button className="btn btn-error status-buttons" disabled>Removing...</button>
+                                        :
+                                        <button onClick={handleReadingDelete} className="btn btn-error status-buttons">Remove</button>
+                                    }
+                                </div>
+                            </div>
                         </div>}
                 </div>
                 <div className="book-inner-info">
@@ -178,7 +191,12 @@ function BookCard({ book }) {
                         <ErrorAlert id="auto-hide-message" errors={error} />
                         :
                         null}
-                    <div className='book-card'>
+                    <BookCardTopContent
+                        book={book}
+                        handleSelect={handleSelect}
+                        loading={loading}
+                    />
+                    {/* <div className='book-card'>
                         <div className="book-card-info book-title">
                             <h1 className="book-title">{title}</h1>
                             <small style={{ fontStyle: 'italic' }}>{author}</small>
@@ -249,7 +267,7 @@ function BookCard({ book }) {
                                 <li>Total Pages: {total_pages}</li>
                             </ul>
                         }
-                    </div>
+                    </div> */}
 
                 </div>
             </div>

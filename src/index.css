@@ -404,6 +404,7 @@ body {
     padding: 12px;
     display: flex;
     margin: 20px 20px;
+    margin-bottom: 30px;
     justify-content: center;
     align-items: flex-start;
     flex-direction: column;
@@ -497,6 +498,89 @@ body {
 
 .chat-text-style{
     font-family: 'Inconsolata', monospace;
+}
+
+.line-break{
+    width: 95%; /* Can be in percentage also. */
+    height:auto;
+    background-color: rgb(216, 216, 216);
+    margin: 10px auto 30px auto;
+    padding: 1px;
+    border-radius: 20px;
+    position: relative;
+}
+
+/* Post Form */
+.post-form-div{
+    margin-top:20px;
+}
+
+.post-form-container{
+    display: flex;
+    flex-direction: column;
+    margin: auto 50px;
+}
+
+.post-form-header{
+    font-style: italic;
+    font-weight:bold;
+    font-family: 'Archivo', sans-serif;
+}
+
+.post-form-title{
+    margin: 10px 0;
+}
+
+.post-form-content{
+    margin-bottom: 10px;
+}
+
+.post-form-button{
+    align-self: flex-end;
+    margin-bottom: 10px;
+}
+
+/* progress and status overall container */
+.progress-status-block{
+    margin-top:20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.status-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.in-shelf-text{
+    font-style: italic;
+    color: gray;
+    padding:15px 20px;
+    margin-bottom:15px;
+    background-color: #dee1e3;
+    border-radius: 15px;
+}
+
+.status-buttons{
+    margin-left:10px;
+    margin-right:10px;
+    margin-bottom:10px;
+}
+
+
+/* Progress Form */
+.progress-form-container{
+    display: flex;
+    flex-direction: row;
+}
+
+.progress-page-setter{
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    width: 90%;
 }
 
 /* Post Page Card */

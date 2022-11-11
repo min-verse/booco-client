@@ -53,24 +53,28 @@ function PostForm({ book, handlePostSubmit }) {
 
     return (
         <>
-            <form onSubmit={submitPost}>
-                <input
-                    type="text"
-                    name="postTitle"
-                    value={postTitle}
-                    onChange={handleTitleChange}
-                    maxLength={30}
-                    placeholder="Post title here"
-                    className="input input-bordered input-info w-full max-w-xs" />
-                <textarea
-                    name="postContent"
-                    value={postContent}
-                    onChange={handlePostChange}
-                    className="textarea textarea-info"
-                    placeholder={`Share your thoughts on ${title} here`}></textarea>
-                <button type="submit" className="btn">Share Post</button>
-            </form>
-
+        <div className="line-break" />
+            <div className="post-form-div">
+                <form className="post-form-container" onSubmit={submitPost}>
+                    <h1 className="post-form-header">Post Your Thoughts on {title}</h1>
+                    <input
+                        type="text"
+                        name="postTitle"
+                        value={postTitle}
+                        onChange={handleTitleChange}
+                        maxLength={30}
+                        placeholder="Post title here"
+                        className="post-form-title input input-bordered input-info w-full max-w-xs" />
+                    <textarea
+                        name="postContent"
+                        value={postContent}
+                        onChange={handlePostChange}
+                        className="post-form-content textarea textarea-info"
+                        placeholder={`Share your thoughts on ${title} here`}></textarea>
+                    <button type="submit" className="btn post-form-button">Share Post</button>
+                </form>
+            </div>
+            <div className="line-break" />
         </>
     );
 }
