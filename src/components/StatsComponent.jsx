@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 function StatsComponent({ genres, moods, posts, comments }) {
 
@@ -6,7 +7,11 @@ function StatsComponent({ genres, moods, posts, comments }) {
     const [mood, setMood] = useState('N/A');
     const [postsMade, setPostsMade] = useState(0);
     const [commentsMade, setCommentsMade] = useState(0);
-    console.log(posts)
+    const user = useSelector((state)=>state.user);
+    // console.log(genres);
+    // console.log(moods);
+    // console.log(posts);
+    // console.log(comments);
 
     useEffect(() => {
         if (genres) {
@@ -16,14 +21,14 @@ function StatsComponent({ genres, moods, posts, comments }) {
             setMood(Object.keys(moods).reduce((a, b) => moods[a] > moods[b] ? a : b, 0));
         }
 
-        if (posts && posts.length) {
+        if (posts) {
             setPostsMade(posts.length);
         }
 
-        if (comments && comments.length) {
+        if (comments) {
             setCommentsMade(comments.length);
         }
-    }, []);
+    }, [user]);
 
     return (
         <>

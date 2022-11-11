@@ -20,7 +20,12 @@ function ChatModal({ open, toggle, friend }) {
 
     useEffect(() => {
 
-        const cable = createConsumer(`ws://localhost:5000/cable`);
+        // // if I want to authenticate connection with JWT
+        const token = localStorage.getItem("token");
+        const url = `ws://localhost:5000/cable?token=${token}`
+        const cable = createConsumer(url);
+
+        // const cable = createConsumer(`ws://localhost:5000/cable`);
 
         const params = {
             channel: "ChatsChannel",
