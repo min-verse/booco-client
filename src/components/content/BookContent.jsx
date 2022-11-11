@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { setPostsUpdate } from '../state/user';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import PostForm from '../PostForm';
-import BookCard from '../BookCard';
-import PostList from '../PostList';
+import PostForm from '../posts/PostForm';
+import BookCard from '../books/BookCard';
+import PostList from '../posts/PostList';
 
 function BookContent({ bookId }) {
 

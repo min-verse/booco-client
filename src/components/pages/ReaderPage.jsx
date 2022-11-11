@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import NavBarUser from '../NavBarUser';
+import NavBarUser from './NavBarUser';
 import ReaderContent from '../content/ReaderContent';
 
 function ReaderPage() {

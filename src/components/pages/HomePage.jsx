@@ -1,4 +1,4 @@
-import NavBarUser from '../NavBarUser';
+import NavBarUser from './NavBarUser';
 import HomeContent from '../content/HomeContent';
 
 function HomePage() {

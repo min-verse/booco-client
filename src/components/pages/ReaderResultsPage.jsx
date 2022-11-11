@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import NavBarUser from '../NavBarUser';
+import NavBarUser from './NavBarUser';
 import ErrorAlert from '../ErrorAlert';
 import ReaderResultsContent from '../content/ReaderResultsContent';
 import UserSearchForm from '../UserSearchForm';

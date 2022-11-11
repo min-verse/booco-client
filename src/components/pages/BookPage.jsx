@@ -1,5 +1,5 @@
 import { useParams } from 'react-router';
-import NavBarUser from '../NavBarUser';
+import NavBarUser from './NavBarUser';
 import BookContent from '../content/BookContent';
 
 function BookPage() {

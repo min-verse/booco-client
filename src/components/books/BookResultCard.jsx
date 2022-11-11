@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { setReadingsUpdate } from './state/user';
+import { setReadingsUpdate } from '../state/user';
 import { useDispatch, useSelector } from 'react-redux';
-import ErrorAlert from './ErrorAlert';
+import ErrorAlert from '../ErrorAlert';
 import { Link } from 'react-router-dom';
 
 function BookResultCard({ book }) {

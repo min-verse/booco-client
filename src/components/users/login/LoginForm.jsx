@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { setUser, setReadings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from './state/user';
+import { setUser, setReadings, setFriends, setPosts, setComments, setPendings, setGenres, setMoods } from '../../state/user';
 
 function LoginForm({ handleError }) {
 

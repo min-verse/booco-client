@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Progress } from 'react-daisyui';
 import { useDispatch } from 'react-redux';
-import ErrorAlert from './ErrorAlert';
-import { setReadingsUpdate } from './state/user';
+import ErrorAlert from '../ErrorAlert';
+import { setReadingsUpdate } from '../state/user';
 import { useSelector } from 'react-redux';
 import ProgressForm from './ProgressForm';
 import BookCardTopContent from './BookCardTopContent';

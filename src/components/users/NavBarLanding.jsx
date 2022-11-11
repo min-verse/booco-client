@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import SignupModal from './SignupModal';
-import LoginModal from './LoginModal';
-import { ReactComponent as BoocoSvg } from '../assets/booco-logo.svg';
+import SignupModal from './signup/SignupModal';
+import LoginModal from './login/LoginModal';
+import { ReactComponent as BoocoSvg } from '../../assets/booco-logo.svg';
 import { Navbar, Dropdown, Button } from 'react-daisyui';
 
 function NavBarLanding() {

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import LoginForm from './LoginForm';
 import { Modal, Button } from 'react-daisyui';
-import ErrorAlert from './ErrorAlert';
+import ErrorAlert from '../../ErrorAlert';
 
 function LoginModal({ open, toggle }){
 

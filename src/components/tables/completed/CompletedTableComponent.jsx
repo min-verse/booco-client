@@ -1,5 +1,5 @@
 import React from 'react';
-import ToReadRowComponent from './ToReadRowComponent';
+import ToReadRowComponent from '../to-reads/ToReadRowComponent';
 
 function CompletedTableComponent({ readings }) {
 

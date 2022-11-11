@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import SignupFormNavBar from './SignupFormNavBar';
+import SignupForm from './SignupForm';
 import { Modal, Button } from 'react-daisyui';
-import ErrorAlert from './ErrorAlert';
+import ErrorAlert from '../../ErrorAlert';
 
-function SignupModalNavBar({ open, toggle }) {
+function SignupModal({ open, toggle }) {
 
     const [errors, setErrors] = useState('');
 
@@ -30,10 +30,10 @@ function SignupModalNavBar({ open, toggle }) {
                     <ErrorAlert errors={errors} />
                     :
                     null}
-                <SignupFormNavBar handleError={toggleErrors} />
+                <SignupForm handleError={toggleErrors} />
             </Modal.Body>
         </Modal>
     );
 }
 
-export default SignupModalNavBar;
+export default SignupModal;

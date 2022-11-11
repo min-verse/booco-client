@@ -1,5 +1,5 @@
 import React from 'react';
-import BookResultList from '../BookResultList';
+import BookResultList from '../books/BookResultList';
 
 function BookResultsContent({books}) {
 

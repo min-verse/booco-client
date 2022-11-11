@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { setUser } from './state/user';
+import { setUser } from '../../state/user';
 
 function SignupForm({ handleError }) {
 

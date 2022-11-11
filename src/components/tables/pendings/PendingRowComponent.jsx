@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { setFriends, setPendings } from './state/user';
+import { setFriends, setPendings } from '../../state/user';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 

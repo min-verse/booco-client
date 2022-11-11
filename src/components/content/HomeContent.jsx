@@ -1,18 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import SignupModal from '../SignupModal';
-import { Link, useNavigate } from 'react-router-dom';
-import { Alert, Hero, Button, Toast, Artboard } from 'react-daisyui';
-import Typewriter from 'typewriter-effect';
+import { Alert, Button, Toast } from 'react-daisyui';
 import { useSelector, useDispatch } from 'react-redux';
-import FriendTable from '../FriendTable';
-import ReadingCard from '../ReadingCard';
-import ReadingGallery from '../ReadingGallery';
-import PendingTableComponent from '../PendingTableComponent';
-import ToReadTableComponent from '../ToReadTableComponent';
-import FriendTableComponent from '../FriendTableComponent';
-import CompletedTableComponent from '../CompletedTableComponent';
+import ReadingGallery from '../readings/ReadingGallery';
+import PendingTableComponent from '../tables/pendings/PendingTableComponent';
+import ToReadTableComponent from '../tables/to-reads/ToReadTableComponent';
+import FriendTableComponent from '../tables/friends/FriendTableComponent';
+import CompletedTableComponent from '../tables/completed/CompletedTableComponent';
 import UserSearchForm from '../UserSearchForm';
-import PostTableComponent from '../PostTableComponent';
+import PostTableComponent from '../tables/posts/PostTableComponent';
 import StatsComponent from '../StatsComponent';
 import StatsVerticalComponent from '../StatsVerticalComponent';
 

@@ -5,10 +5,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import CommentList from '../CommentList';
-import CommentForm from '../CommentForm';
+import CommentList from '../comments/CommentList';
+import CommentForm from '../comments/CommentForm';
 import ErrorAlert from '../ErrorAlert';
-import PostPageCard from '../PostPageCard';
+import PostPageCard from '../posts/PostPageCard';
 
 function PostContent({ postId }) {
 

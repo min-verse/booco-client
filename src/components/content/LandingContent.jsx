@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SignupModal from '../SignupModal';
+import SignupModal from '../users/signup/SignupModal';
 import { Hero, Button } from 'react-daisyui';
 import Typewriter from 'typewriter-effect';
 

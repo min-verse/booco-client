@@ -1,5 +1,5 @@
 import React from 'react';
-import ReaderResultList from '../ReaderResultList';
+import ReaderResultList from '../readers/ReaderResultList';
 
 function ReaderResultsContent({readers}) {
 

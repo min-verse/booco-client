@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { setOutgoingsUpdate } from './state/user';
+import { setOutgoingsUpdate } from '../state/user';
 import { useDispatch, useSelector } from 'react-redux';
-import ErrorAlert from './ErrorAlert';
+import ErrorAlert from '../ErrorAlert';
 import { Link, useNavigate } from 'react-router-dom';
 
 function ReaderResultCard({ reader }) {

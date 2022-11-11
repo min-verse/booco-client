@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearUser } from './state/user';
+import { clearUser } from '../state/user';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons';
-import { ReactComponent as BoocoSvg } from '../assets/booco-logo.svg';
+import { ReactComponent as BoocoSvg } from '../../assets/booco-logo.svg';
 import { Navbar, Dropdown, Button, Form, Input } from 'react-daisyui';
 import { Link, useNavigate } from 'react-router-dom';
 

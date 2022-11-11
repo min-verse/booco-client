@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom';
-import NavBarUser from '../NavBarUser';
+import NavBarUser from './NavBarUser';
 import BookResultsContent from '../content/BookResultsContent';
 import ErrorAlert from '../ErrorAlert';
-import BookSearchForm from '../BookSearchForm';
+import BookSearchForm from '../books/BookSearchForm';
 
 function BookResultsPage() {
 

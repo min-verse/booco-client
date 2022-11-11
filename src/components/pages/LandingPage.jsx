@@ -1,6 +1,6 @@
 import { useEffect } from 'react'
 import { useNavigate } from 'react-router';
-import NavBarLanding from '../NavBarLanding';
+import NavBarLanding from "../users/NavBarLanding";
 import LandingContent from '../content/LandingContent';
 
 function LandingPage() {

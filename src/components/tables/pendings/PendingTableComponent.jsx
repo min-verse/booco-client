@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PendingRowComponent from './PendingRowComponent';
-import ErrorAlert from './ErrorAlert';
+import ErrorAlert from '../../ErrorAlert';
 
 function PendingTableComponent({ pendings }) {
 

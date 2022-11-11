@@ -1,9 +1,9 @@
 import React from 'react';
-import ReadingGallery from '../ReadingGallery';
-import ToReadTableComponent from '../ToReadTableComponent';
-import FriendTableComponent from '../FriendTableComponent';
-import CompletedTableComponent from '../CompletedTableComponent';
-import PostTableComponent from '../PostTableComponent';
+import ReadingGallery from '../readings/ReadingGallery';
+import ToReadTableComponent from '../tables/to-reads/ToReadTableComponent';
+import FriendTableComponent from '../tables/friends/FriendTableComponent';
+import CompletedTableComponent from '../tables/completed/CompletedTableComponent';
+import PostTableComponent from '../tables/posts/PostTableComponent';
 import StatsComponent from '../StatsComponent';
 import StatsVerticalComponent from '../StatsVerticalComponent';
 
