@@ -91,7 +91,7 @@ function SignupForm({ handleError }) {
         <div className="mt-10 sm:mt-0">
             <div>
                 <div className="mt-5 md:col-span-2 md:mt-0">
-                    <form id="sign-up-form" onSubmit={handleSubmit}>
+                    <form onSubmit={handleSubmit}>
                         <div className="overflow-hidden shadow sm:rounded-md">
                             <div className="bg-white px-4 py-5 sm:p-6">
                                 <div className="grid grid-cols-6 gap-6">
@@ -156,7 +156,7 @@ function SignupForm({ handleError }) {
                                         <label htmlFor="profile-picture" className="block text-sm font-medium text-gray-700">
                                             Select Avatar
                                         </label>
-                                        <div class="sign-up-dropdown">
+                                        <div className="sign-up-dropdown">
                                             <div className="mask mask-squircle w-12 h-12 sign-up-dropdown-option">
                                                 <img src={avatar} alt="Avatar Tailwind CSS Component" />
                                             </div>

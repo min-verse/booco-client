@@ -60,7 +60,7 @@ function PostForm({ book, handlePostSubmit }) {
                         name="postTitle"
                         value={postTitle}
                         onChange={handleTitleChange}
-                        maxLength={30}
+                        maxLength={50}
                         placeholder="Post title here"
                         className="post-form-title input input-bordered input-info w-full max-w-xs" />
                     <textarea
