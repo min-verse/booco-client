@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router-dom';
 import { setOutgoingsUpdate, setFriends } from '../state/user';
 import ErrorAlert from '../ErrorAlert';
 import { useSelector, useDispatch } from 'react-redux';
-import Swal from 'sweetalert2'
-import withReactContent from 'sweetalert2-react-content'
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import ReaderResultContent from './ReaderResultContent';
-import ChatModal from '../ChatModal';
+import ChatModal from '../chat/ChatModal';
 
 function ReaderContent({ readerId }) {
 
@@ -42,7 +42,7 @@ function ReaderContent({ readerId }) {
             showCancelButton: true,
             confirmButtonText: `Remove ${currentReader['username'] ? currentReader['username'] : "this reader"}`,
             confirmButtonColor: '#ef4444'
-        })
+        });
 
         // check this code later for edge cases
         if (confirmation['value']) {

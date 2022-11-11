@@ -3,13 +3,15 @@ import { Progress } from 'react-daisyui';
 import { useDispatch } from 'react-redux';
 import ErrorAlert from '../ErrorAlert';
 import { setReadingsUpdate } from '../state/user';
+import Swal from 'sweetalert2';
+import withReactContent from 'sweetalert2-react-content';
 import { useSelector } from 'react-redux';
 import ProgressForm from './ProgressForm';
 import BookCardTopContent from './BookCardTopContent';
 
 function BookCard({ book }) {
 
-    const { id, total_pages, cover, posts } = book;
+    const { id, title, total_pages, cover, posts } = book;
     const user = useSelector((state) => state.user);
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
@@ -18,6 +20,7 @@ function BookCard({ book }) {
     const [status, setStatus] = useState('');
     const [visible, setVisible] = useState(false);
     const [bookPosts, setBookPosts] = useState([]);
+    const MySwal = withReactContent(Swal);
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -67,31 +70,43 @@ function BookCard({ book }) {
     }
 
     const handleReadingDelete = async () => {
-        setLoading(true)
-        try {
-            let token = localStorage.getItem("token");
-            if (token) {
-                await fetch(`http://localhost:5000/readings/${id}`, {
-                    method: 'DELETE',
-                    headers: {
-                        "Content-Type": "application/json",
-                        Authorization: token,
-                    }
-                }).then(res => res.json())
-                    .then((data) => {
-                        if (data['error']) {
-                            setError(data['error']);
-                        } else {
-                            setError('');
-                            setLoading(false);
-                            setInReading(false);
-                            setStatus('');
-                            dispatch(setReadingsUpdate(data));
+        setLoading(true);
+        const confirmation = await MySwal.fire({
+            title: <p>Are you sure you want to remove {title ? title : "this title"} from your tracked books?</p>,
+            showConfirmButton: true,
+            showCancelButton: true,
+            confirmButtonText: `Remove ${title ? title : "this title"}`,
+            confirmButtonColor: '#ef4444'
+        });
+
+        if(confirmation['value']){
+            try {
+                let token = localStorage.getItem("token");
+                if (token) {
+                    await fetch(`http://localhost:5000/readings/${id}`, {
+                        method: 'DELETE',
+                        headers: {
+                            "Content-Type": "application/json",
+                            Authorization: token,
                         }
-                    });
+                    }).then(res => res.json())
+                        .then((data) => {
+                            if (data['error']) {
+                                setError(data['error']);
+                            } else {
+                                setError('');
+                                setLoading(false);
+                                setInReading(false);
+                                setStatus('');
+                                dispatch(setReadingsUpdate(data));
+                            }
+                        });
+                }
+            } catch (error) {
+                setError(error);
             }
-        } catch (error) {
-            setError(error);
+        }else{
+            setLoading(false);
         }
     };
 

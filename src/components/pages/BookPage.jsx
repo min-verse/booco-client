@@ -5,7 +5,6 @@ import BookContent from '../content/BookContent';
 function BookPage() {
 
     const {id} = useParams();
-    console.log(id);
 
     return (
         <>
