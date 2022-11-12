@@ -37,13 +37,14 @@ function BookSearchForm() {
 
     return (
         <>
-            <Form onSubmit={handleSearch} style={{margin:10}}>
+            <Form onSubmit={handleSearch} className="book-search-form">
                 <label>Search for book by title</label>
                 <Input
                     onChange={handleTitleChange}
                     value={title}
                     name="searchTitle"
                     bordered
+                    className="book-search-input"
                     type="text"
                     placeholder="Search for a title" />
                 <label>Search for book by author</label>
@@ -52,9 +53,10 @@ function BookSearchForm() {
                     value={author}
                     name="searchAuthor"
                     bordered
+                    className="book-search-input"
                     type="text"
                     placeholder="Search for an author" />
-                <Button type="submit">Search</Button>
+                <Button className="book-search-button" type="submit">Search</Button>
             </Form>
         </>
     );

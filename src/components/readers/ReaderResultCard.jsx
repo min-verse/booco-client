@@ -90,38 +90,38 @@ function ReaderResultCard({ reader }) {
                 </div>
                 <div style={{ display: 'flex', flexDirection: 'column' }}>
                     <div>
-                        <h1>{username}</h1>
+                        <h1 className="reader-card-result-username">{username}</h1>
                         <h3>Their Recent Reads:</h3>
                         {readings && readings.length ?
                             readings.length > 5 ?
-                                <p>{readings.map((book, index) => {
+                                <p className="reader-card-result-readings">{readings.map((book, index) => {
                                     if (index < 5) {
                                         return (
-                                            <span key={index}>{book['book']['title']}, </span>
+                                            <span className="reader-card-result-readings" key={index}>{book['book']['title']}, </span>
                                         );
                                     } else if (index === 5) {
                                         return (
-                                            <span key={index}>{book['book']['title']}</span>
+                                            <span className="reader-card-result-readings" key={index}>{book['book']['title']}</span>
                                         );
                                     }
                                 })}</p>
                                 :
-                                <p>{readings.map((book, index) => {
+                                <p className="reader-card-result-readings">{readings.map((book, index) => {
                                     if (index < readings.length) {
                                         return (
-                                            <span key={index}>{book['book']['title']}, </span>
+                                            <span className="reader-card-result-readings" key={index}>{book['book']['title']}, </span>
                                         );
                                     } else {
                                         return (
-                                            <span key={index}>{book['book']['title']}</span>
+                                            <span className="reader-card-result-readings" key={index}>{book['book']['title']}</span>
                                         );
                                     }
                                 })}</p>
                             :
-                            <p>This reader hasn't added any books yet</p>
+                            <p className="reader-card-result-readings" style={{color:'#a0a0a0'}}>This reader hasn't added any books yet</p>
                         }
                     </div>
-                    <div>
+                    <div style={{alignItems:'flex-end'}}>
                         <Link className="btn reader-result-card-button" to={`/readers/${id}`}>See Profile</Link>
                         {inFriends ?
                             <button className="btn reader-result-card-button" disabled>Already Friends</button>
@@ -135,7 +135,7 @@ function ReaderResultCard({ reader }) {
                                     loading ?
                                         <button className="btn reader-result-card-button" disabled>Sending Request...</button>
                                         :
-                                        <button className="btn reader-result-card-button" onClick={handleSendRequest}>Send Friend Request</button>
+                                        <button className="btn reader-result-card-button btn-success" onClick={handleSendRequest}>Send Friend Request</button>
                         }
                     </div>
                 </div>

@@ -2,13 +2,14 @@ import { useEffect } from 'react'
 import { useNavigate } from 'react-router';
 import NavBarLanding from "../users/NavBarLanding";
 import LandingContent from '../content/LandingContent';
+import LandingFooter from '../content/LandingFooter';
 
 function LandingPage() {
 
   const navigate = useNavigate();
-  
 
-  const goToUserHome = ()=>{
+
+  const goToUserHome = () => {
     navigate("/home");
   }
 
@@ -21,8 +22,9 @@ function LandingPage() {
 
   return (
     <>
-    <NavBarLanding />
-    <LandingContent />
+      <NavBarLanding />
+      <LandingContent />
+      <LandingFooter />
     </>
   )
 };
