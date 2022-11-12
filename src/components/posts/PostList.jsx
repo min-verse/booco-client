@@ -5,7 +5,7 @@ function PostList({posts}){
 
 
     return (
-        <>
+        <div className="post-card-container-overall">
         {posts.map((item) => {
                         return (
                             <PostCard
@@ -14,7 +14,7 @@ function PostList({posts}){
                             />
                         );
                     })}
-        </>
+        </div>
     );
 }
 

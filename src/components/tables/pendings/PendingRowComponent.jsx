@@ -77,7 +77,9 @@ function PendingRowComponent({ pendingData, handleError }) {
                     <div className="flex items-center space-x-3">
                         <div className="avatar">
                             <div className="mask mask-squircle w-12 h-12">
-                                <img src={avatar ? avatar : "https://i.imgur.com/KhYI6SH.jpg"} alt="Avatar Tailwind CSS Component" />
+                                <Link to={`/readers/${id}` ? `/readers/${id}` : `/home`}>
+                                    <img src={avatar ? avatar : "https://i.imgur.com/KhYI6SH.jpg"} alt="Avatar Tailwind CSS Component" />
+                                </Link>
                             </div>
                         </div>
                         <div>
