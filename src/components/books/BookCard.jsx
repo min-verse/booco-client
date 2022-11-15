@@ -44,7 +44,7 @@ function BookCard({ book }) {
         try {
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/readings`, {
+                await fetch(`https://booco-app.onrender.com/readings`, {
                     method: 'PATCH',
                     headers: {
                         "Content-Type": "application/json",
@@ -83,7 +83,7 @@ function BookCard({ book }) {
             try {
                 let token = localStorage.getItem("token");
                 if (token) {
-                    await fetch(`http://localhost:5000/readings/${id}`, {
+                    await fetch(`https://booco-app.onrender.com/${id}`, {
                         method: 'DELETE',
                         headers: {
                             "Content-Type": "application/json",
@@ -117,7 +117,7 @@ function BookCard({ book }) {
         try {
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/change_page`, {
+                await fetch(`https://booco-app.onrender.com/change_page`, {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",

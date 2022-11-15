@@ -27,7 +27,7 @@ function BookResultCard({ book }) {
             setLoading(true);
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/readings`, {
+                await fetch(`https://booco-app.onrender.com/readings`, {
                     method: 'PATCH',
                     headers: {
                         "Content-Type": "application/json",

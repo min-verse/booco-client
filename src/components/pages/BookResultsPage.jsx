@@ -15,7 +15,7 @@ function BookResultsPage() {
         const titleSearch = bookSearch.get('title') ? bookSearch.get('title') : '';
         const authorSearch = bookSearch.get('author') ? bookSearch.get('author') : '';
         let token = localStorage.getItem("token");
-        fetch("http://localhost:5000/search_books", {
+        fetch("https://booco-app.onrender.com/search_books", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

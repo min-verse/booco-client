@@ -30,7 +30,7 @@ function App() {
 
     let token = localStorage.getItem("token");
     if (token) {
-      fetch("http://localhost:5000/private/verify", {
+      fetch("https://booco-app.onrender.com/private/verify", {
         headers: {
           "Content-Type": "application/json",
           Authorization: token,

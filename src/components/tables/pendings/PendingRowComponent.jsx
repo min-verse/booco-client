@@ -14,7 +14,7 @@ function PendingRowComponent({ pendingData, handleError }) {
             setLoading(true);
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/friendships/${id}`, {
+                await fetch(`https://booco-app.onrender.com/friendships/${id}`, {
                     method: 'PATCH',
                     headers: {
                         "Content-Type": "application/json",
@@ -42,7 +42,7 @@ function PendingRowComponent({ pendingData, handleError }) {
             setLoading(true);
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/friendships/${id}`, {
+                await fetch(`https://booco-app.onrender.com/friendships/${id}`, {
                     method: 'DELETE',
                     headers: {
                         "Content-Type": "application/json",

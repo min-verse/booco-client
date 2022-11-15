@@ -51,7 +51,7 @@ function ReaderResultCard({ reader }) {
             setLoading(true);
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/friendships`, {
+                await fetch(`https://booco-app.onrender.com/friendships`, {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",

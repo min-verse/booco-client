@@ -15,7 +15,7 @@ function ReaderResultsPage() {
         const userSearch = readerSearch.get('user') ? readerSearch.get('user') : '';
 
         let token = localStorage.getItem("token");
-        fetch("http://localhost:5000/search_readers", {
+        fetch("https://booco-app.onrender.com/search_readers", {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

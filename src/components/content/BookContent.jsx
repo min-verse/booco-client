@@ -23,7 +23,7 @@ function BookContent({ bookId }) {
         const getBook = async () => {
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/books/${bookId}`, {
+                await fetch(`https://booco-app.onrender.com/books/${bookId}`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: token,

@@ -51,7 +51,7 @@ function ReaderContent({ readerId }) {
                 setLoading(true);
                 let token = localStorage.getItem("token");
                 if (token) {
-                    await fetch(`http://localhost:5000/friendships/${currentReader['id']}`, {
+                    await fetch(`https://booco-app.onrender.com/friendships/${currentReader['id']}`, {
                         method: 'DELETE',
                         headers: {
                             "Content-Type": "application/json",
@@ -79,7 +79,7 @@ function ReaderContent({ readerId }) {
         const getReader = async () => {
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/reader_page`, {
+                await fetch(`https://booco-app.onrender.com/reader_page`, {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",
@@ -115,7 +115,7 @@ function ReaderContent({ readerId }) {
             setLoading(true);
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/friendships`, {
+                await fetch(`https://booco-app.onrender.com/friendships`, {
                     method: 'POST',
                     headers: {
                         "Content-Type": "application/json",

@@ -17,7 +17,7 @@ function CommentForm({ post, handleError, handleNewComment }) {
     function submitComment(e) {
         e.preventDefault();
         let token = localStorage.getItem("token");
-        fetch(`http://localhost:5000/comments`, {
+        fetch(`https://booco-app.onrender.com/comments`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

@@ -21,7 +21,7 @@ function PostForm({ book, handlePostSubmit }) {
         e.preventDefault();
         console.log(e.target);
         let token = localStorage.getItem("token");
-        fetch(`http://localhost:5000/posts`, {
+        fetch(`https://booco-app.onrender.com/posts`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

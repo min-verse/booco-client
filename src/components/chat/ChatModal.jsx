@@ -22,7 +22,7 @@ function ChatModal({ open, toggle, friend }) {
 
         // // if I want to authenticate connection with JWT
         const token = localStorage.getItem("token");
-        const url = `ws://localhost:5000/cable?token=${token}`
+        const url = `wss://booco.onrender.com/cable/cable?token=${token}`
         const cable = createConsumer(url);
 
         // const cable = createConsumer(`ws://localhost:5000/cable`);
@@ -57,7 +57,7 @@ function ChatModal({ open, toggle, friend }) {
 
     useEffect(() => {
         let token = localStorage.getItem("token");
-        fetch(`http://localhost:5000/all_bookchats/${friend['id']}`, {
+        fetch(`https://booco-app.onrender.com/all_bookchats/${friend['id']}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: token,
@@ -71,7 +71,7 @@ function ChatModal({ open, toggle, friend }) {
     const handleAddMessage = async (e) => {
         e.preventDefault();
         let token = localStorage.getItem("token");
-        await fetch(`http://localhost:5000/bookchats`, {
+        await fetch(`https://booco-app.onrender.com/bookchats`, {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",

@@ -28,7 +28,7 @@ function LoginForm({ handleError }) {
     async function handleSubmit(e) {
         e.preventDefault();
         setLoading(true);
-        await fetch("http://localhost:5000/login", {
+        await fetch("https://booco-app.onrender.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

@@ -49,7 +49,7 @@ function SignupForm({ handleError }) {
             setLoading(false);
             handleError("Passwords do not match. Unable to register new reader.");
         } else {
-            await fetch("http://localhost:5000/signup", {
+            await fetch("https://booco-app.onrender.com/signup", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

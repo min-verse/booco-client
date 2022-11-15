@@ -38,7 +38,7 @@ function NavBarUser() {
     async function handleLogOut() {
         console.log('I\'ve been \n clicked');
         try {
-            await fetch("http://localhost:5000/logout", {
+            await fetch("https://booco-app.onrender.com/logout", {
                 method: "delete",
                 headers: {
                     "Content-Type": "application/json",

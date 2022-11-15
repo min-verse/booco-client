@@ -28,7 +28,7 @@ function PostContent({ postId }) {
         const getPost = async () => {
             let token = localStorage.getItem("token");
             if (token) {
-                await fetch(`http://localhost:5000/posts/${postId}`, {
+                await fetch(`https://booco-app.onrender.com/posts/${postId}`, {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: token,
