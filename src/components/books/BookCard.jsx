@@ -83,7 +83,7 @@ function BookCard({ book }) {
             try {
                 let token = localStorage.getItem("token");
                 if (token) {
-                    await fetch(`https://booco-app.onrender.com/${id}`, {
+                    await fetch(`https://booco-app.onrender.com/readings/${id}`, {
                         method: 'DELETE',
                         headers: {
                             "Content-Type": "application/json",
