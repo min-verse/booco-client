@@ -22,7 +22,7 @@ function ChatModal({ open, toggle, friend }) {
 
         // // if I want to authenticate connection with JWT
         const token = localStorage.getItem("token");
-        const url = `wss://booco.onrender.com/cable?token=${token}`
+        const url = `wss://booco-app.onrender.com/cable?token=${token}`
         const cable = createConsumer(url);
 
         // const cable = createConsumer(`ws://localhost:5000/cable`);
